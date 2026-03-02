@@ -11,7 +11,7 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 ## Phases
 
 - [x] **Phase 1: Foundation** - Project setup, dependencies, and Tailwind configuration
-- [ ] **Phase 2: Content & Design** - All sections with actual content
+- [x] **Phase 2: Content & Design** - All sections with actual content
 - [ ] **Phase 3: Polish & Deploy** - Performance optimization, testing, and deployment
 
 ---
@@ -70,8 +70,8 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 **Plans:** 2 plans
 
 **Plan list:**
-- [ ] 02-content-design-01-PLAN.md — Install dependencies and create all section components
-- [ ] 02-content-design-02-PLAN.md — Integrate sections into page and enable smooth scroll
+- [x] 02-content-design-01-PLAN.md — Install dependencies and create all section components
+- [x] 02-content-design-02-PLAN.md — Integrate sections into page and enable smooth scroll
 
 ---
 
@@ -100,8 +100,8 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | ✅ Complete | 2026-03-02 |
-| 2. Content & Design | 0/2 | Not started | - |
-| 3. Polish & Deploy | 0/1 | Not started | - |
+| 2. Content & Design | 2/2 | ✅ Complete | 2026-03-02 |
+| 3. Polish & Deploy | 0/2 | Not started | - |
 
 ---
 
