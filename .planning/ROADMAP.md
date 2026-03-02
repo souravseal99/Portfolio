@@ -91,7 +91,11 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 4. Open Graph tags are present for social sharing
 5. Site is deployed and accessible at a public URL (Vercel)
 
-**Plans:** TBD
+**Plans:** 2 plans
+
+**Plan list:**
+- [x] 03-polish-deploy-01-PLAN.md — SEO metadata and image optimization
+- [x] 03-polish-deploy-02-PLAN.md — Vercel deployment and Lighthouse verification
 
 ---
 
@@ -101,7 +105,7 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | ✅ Complete | 2026-03-02 |
 | 2. Content & Design | 2/2 | ✅ Complete | 2026-03-02 |
-| 3. Polish & Deploy | 0/2 | Not started | - |
+| 3. Polish & Deploy | 2/2 | ✅ Planned | - |
 
 ---
 
