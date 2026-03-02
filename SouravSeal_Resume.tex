@@ -1,0 +1,241 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourav Seal
+% Based off of: https://github.com/jakeryang/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% only for pdflatex
+% \input{glyphtounicode}
+
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width - optional, comment out if not available
+%\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey - using gray model
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.4}
+\definecolor{text-grey}{gray}{.15}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underilne
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+%\renewcommand{\ULdepth}{1.8pt}
+%\contourlength{0.8pt}
+%\newcommand{\myuline}[1]{%
+%  \uline{\phantom{#1}}%
+%  \llap{\contour{white}{#1}}%
+%}
+
+
+% custom font: helvetica-style
+\usepackage{tgheros}
+%\renewcommand*\familydefault{\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\fancyhead{}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyfoot[C]{}
+\fancyfoot[L]{}
+\fancyfoot[R]{}
+\addtolength{\footskip}{5pt}
+\fancyhf{} % clear again to remove any default rules
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting - serif
+% \titleformat{\section}{
+%   \vspace{2pt} \scshape \raggedright\large % header section
+% }{}{0em}{}[\color{black} \titlerule \vspace{-5pt}]
+
+% TODO EBSERIES
+% sans serif sections
+\titleformat {\section}{
+    \bfseries \vspace{2pt} \raggedright \large % header section
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
+
+% only for pdflatex
+% Ensure that generate pdf is machine readable/ATS parsable
+% \pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\ % top row of resume entry
+      \textit{#3} & {\color{dark-grey} \small #4}\\ % second row of resume entry
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+%\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% CHANGED default leftmargin  0.15 in
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+
+\color{text-grey}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %////////////////////////%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Sourav Seal} \\ \vspace{5pt}
+    \small \faPhone* \texttt{+91 6296822691} \hspace{1pt}$|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} \texttt{sourav.seal1999@gmail.com} \hspace{1pt}$|$
+    \hspace{1pt} \faGithub \hspace{2pt} \texttt{souravseal99} \hspace{1pt}$|$
+    \hspace{1pt} \faLinkedin \hspace{2pt} \texttt{in/sourav-seal} \\
+    \vspace{-3pt}
+    % \small \faMapMarker* \hspace{2pt}\texttt{Purulia, West Bengal, India}
+\end{center}
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {CloudKaptan}{June 2022 -- Present}
+      {Full-Stack Developer}{Kolkata, India}
+      \resumeItemListStart
+        \resumeItem{Built and maintained full-stack web applications using React, Node.js, and MongoDB/PostgreSQL}
+        \resumeItem{Developed RESTful APIs and integrated third-party services for client projects}
+        \resumeItem{Collaborated with cross-functional teams to deliver feature-rich applications on time}
+        \resumeItem{Implemented authentication systems (JWT) and optimized database queries for performance}
+        \resumeItem{Contributed to open-source projects and participated in code reviews}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{RoomMate}} {\href{https://github.com/souravseal99/RoomMate}{View on GitHub}}
+          \resumeItemListStart
+            \resumeItem{Full-stack web application for managing shared living spaces - expenses, chores, inventory}
+            \resumeItem{\textbf{Tech Stack}: React + Vite + TypeScript, Express, Prisma, PostgreSQL}
+            \resumeItem{Implemented JWT authentication with access/refresh tokens}
+            \resumeItem{Built 182+ commits, 27 forks, active open-source contribution}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{FunwithPhysics}} {\href{https://github.com/souravseal99/FunwithPhysics}{View on GitHub}}
+          \resumeItemListStart
+            \resumeItem{Contributed to an educational physics application}
+            \resumeItem{\textbf{Tech Stack}: JavaScript, React}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{E-Com}} {\href{https://github.com/souravseal99/E-Com}{View on GitHub}}
+          \resumeItemListStart
+            \resumeItem{E-commerce platform built with JavaScript technologies}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+
+%-----------EDUCATION-----------
+\section {EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bachelor of Technology in Computer Science}{2018 -- 2022}
+      {Apex Institute of Technology / Maulana Abul Kalam Azad University}{West Bengal, India}
+      	\resumeItemListStart
+        \resumeItem{Focused on software development, web technologies, and database systems}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------SKILLS-------------
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     \textbf{Frontend}     {: React.js, Next.js, TypeScript, HTML/CSS, TailwindCSS, React Native}\vspace{2pt} \\
+     \textbf{Backend}     {: Node.js, Express.js, MongoDB, PostgreSQL, Prisma, REST APIs}\vspace{2pt} \\
+     \textbf{Tools \& Tech} {: Git, GitHub, Docker, Postman, Figma, VS Code, Linux}\vspace{2pt} \\
+     \textbf{Languages}    {: JavaScript, TypeScript, Python, C, C++, Java}
+    }}
+ \end{itemize}
+
+
+%-----------CERTIFICATIONS-----
+\section{CERTIFICATIONS \& ACHIEVEMENTS}
+ \resumeSubHeadingListStart
+    \resumeItem{Hacktoberfest Maintainer \& Contributor - Multiple years}
+    \resumeItem{Winter of Code Social 2025 - Project Admin}
+    \resumeItem{DevIncept Contribution Program 2021}
+    \resumeItem{Mexili Winter of code - 2021}
+ \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}

@@ -20,12 +20,17 @@
 | Netlify | Free | Alternative, good for static sites |
 | GitHub Pages | Free | Fully free, but less features |
 
+### Component Library
+| Technology | Purpose | Why |
+|------------|---------|-----|
+| shadcn/ui | Pre-built components | Copy/paste, Tailwind-native, accessible, fully customizable |
+
 ### Supporting Tools
 | Tool | Purpose | When to Use |
 |-----|---------|-------------|
-| Vercel Analytics | Traffic tracking | Free, privacy-friendly |
-| Google Fonts | Typography | Free, large selection |
+| shadcn/ui | Buttons, cards, navigation, badges | UI components |
 | Lucide React | Icons | Free, clean icons |
+| Framer Motion | Animations | Smooth transitions |
 
 ## Installation
 
@@ -33,9 +38,21 @@
 # Create Next.js app with Tailwind
 npx create-next-app@latest portfolio --typescript --tailwind --eslint
 
-# Install additional dependencies
-npm install lucide-react framer-motion
+# Initialize shadcn/ui
+npx shadcn-ui@latest init
+
+# Add useful components
+npx shadcn-ui@latest add button card badge separator
 ```
+
+## Components We'll Use
+
+| Component | Purpose |
+|-----------|---------|
+| Button | CTA, links |
+| Card | Project cards, experience items |
+| Badge | Skill tags |
+| Separator | Section dividers |
 
 ## Alternatives Considered
 
