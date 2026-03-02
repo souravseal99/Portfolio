@@ -67,7 +67,11 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 7. Footer shows copyright and social links
 8. Smooth scroll navigation works when clicking nav links
 
-**Plans:** TBD
+**Plans:** 2 plans
+
+**Plan list:**
+- [ ] 02-content-design-01-PLAN.md — Install dependencies and create all section components
+- [ ] 02-content-design-02-PLAN.md — Integrate sections into page and enable smooth scroll
 
 ---
 
@@ -96,7 +100,7 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | ✅ Complete | 2026-03-02 |
-| 2. Content & Design | 0/1 | Not started | - |
+| 2. Content & Design | 0/2 | Not started | - |
 | 3. Polish & Deploy | 0/1 | Not started | - |
 
 ---
