@@ -5,32 +5,32 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900"
+      className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-b from-[#fef5ed] to-[#e8e0d8] dark:from-black dark:to-gray-900"
     >
-      {/* Gradient background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-600 opacity-10 pointer-events-none" />
+      {/* Gradient background overlay - Colorhunt palette */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#9a7999] via-[#adc2a9] to-[#d3e4cd] opacity-10 pointer-events-none" />
       
       <div className="text-center max-w-3xl relative z-10">
-        {/* Name with gradient text */}
-        <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 mb-4 tracking-tight">
+        {/* Name with gradient text - muted purple */}
+        <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#9a7999] via-[#adc2a9] to-[#d3e4cd] mb-4 tracking-tight">
           Sourav Seal
         </h1>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 mb-6">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#9a7999] dark:text-[#d3e4cd] mb-6">
           Full-Stack Developer
         </h2>
 
         {/* Tagline */}
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
           Building scalable web applications with modern technologies
         </p>
 
-        {/* CTA Button */}
+        {/* CTA Button - sage green */}
         <Button
           asChild
           size="lg"
-          className="text-lg px-8 py-6 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="text-lg px-8 py-6 rounded-full bg-[#d3e4cd] hover:bg-[#adc2a9] text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <a href="#projects">
             Explore Projects
