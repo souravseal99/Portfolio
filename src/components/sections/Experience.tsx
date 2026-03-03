@@ -26,6 +26,13 @@ export default function Experience() {
       className="py-20 px-4 bg-gray-50 dark:bg-gray-900"
     >
       <div className="max-w-4xl mx-auto">
+        {/* Terminal-style section header */}
+        <div className="font-mono text-sm text-center mb-2">
+          <span className="text-purple-500">&lt;</span>
+          Experience
+          <span className="text-purple-500">/&gt;</span>
+        </div>
+        
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           Experience
         </h2>

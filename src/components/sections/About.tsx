@@ -7,6 +7,13 @@ export default function About() {
       className="py-20 px-4 bg-white dark:bg-black"
     >
       <div className="max-w-4xl mx-auto">
+        {/* Terminal-style section header */}
+        <div className="font-mono text-sm text-center mb-2">
+          <span className="text-purple-500">&lt;</span>
+          About
+          <span className="text-purple-500">/&gt;</span>
+        </div>
+        
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           About Me
         </h2>
@@ -33,6 +40,16 @@ export default function About() {
               Passionate about writing clean, efficient code and continuously
               learning new technologies to build better user experiences.
             </p>
+            
+            {/* Witty programming lines */}
+            <div className="mt-6 space-y-2 font-mono text-sm">
+              <p className="text-purple-600 dark:text-purple-400">
+                <span className="text-gray-500">//</span> When I&apos;m not coding, I&apos;m refactoring my dreams
+              </p>
+              <p className="text-pink-600 dark:text-pink-400">
+                <span className="text-gray-500">while</span>(alive) {'{'} eat(); sleep(); code(); repeat(); {'}'}
+              </p>
+            </div>
           </div>
         </div>
 

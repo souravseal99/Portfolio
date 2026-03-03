@@ -33,7 +33,7 @@ export default function Hero() {
           className="text-lg px-8 py-6 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <a href="#projects">
-            View My Work
+            Explore Projects
             <ArrowDown className="ml-2 h-5 w-5" />
           </a>
         </Button>
