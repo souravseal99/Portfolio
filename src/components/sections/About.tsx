@@ -4,26 +4,26 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 px-4 bg-white dark:bg-black"
+      className="py-20 px-4 bg-[#fef5ed] dark:bg-black"
     >
       <div className="max-w-4xl mx-auto">
         {/* Terminal-style section header */}
         <div className="font-mono text-sm text-center mb-2">
-          <span className="text-purple-500">&lt;</span>
-          About
-          <span className="text-purple-500">/&gt;</span>
+          <span className="text-[#9a7999]">&lt;</span>
+          System Overview
+          <span className="text-[#9a7999]">/&gt;</span>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          About Me
+          System Overview
         </h2>
-        {/* Gradient accent */}
-        <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-8" />
+        {/* Gradient accent - Colorhunt palette */}
+        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          {/* Profile Placeholder */}
+          {/* Profile Placeholder - sage gradient */}
           <div className="flex-shrink-0 mx-auto md:mx-0">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl font-bold">
+            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#d3e4cd] to-[#9a7999] flex items-center justify-center text-white text-4xl font-bold">
               SS
             </div>
           </div>
@@ -43,11 +43,20 @@ export default function About() {
             
             {/* Witty programming lines */}
             <div className="mt-6 space-y-2 font-mono text-sm">
-              <p className="text-purple-600 dark:text-purple-400">
+              <p className="text-[#9a7999] dark:text-[#d3e4cd]">
                 <span className="text-gray-500">//</span> When I&apos;m not coding, I&apos;m refactoring my dreams
               </p>
-              <p className="text-pink-600 dark:text-pink-400">
+              <p className="text-[#adc2a9] dark:text-[#adc2a9]">
                 <span className="text-gray-500">while</span>(alive) {'{'} eat(); sleep(); code(); repeat(); {'}'}
+              </p>
+              <p className="text-[#9a7999] dark:text-[#d3e4cd]">
+                <span className="text-gray-500">//</span> TODO: write better bio
+              </p>
+              <p className="text-[#adc2a9] dark:text-[#adc2a9]">
+                <span className="text-gray-500">git commit -m</span> &quot;const future = await buildAmazingThings()&quot;
+              </p>
+              <p className="text-[#9a7999] dark:text-[#d3e4cd]">
+                <span className="text-gray-500">console.log</span>(&quot;Hello, World!&quot;); <span className="text-gray-500">// My kind of greeting</span>
               </p>
             </div>
           </div>
