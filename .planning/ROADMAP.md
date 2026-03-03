@@ -6,13 +6,14 @@
 
 ## Overview
 
-This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase delivers a coherent, verifiable capability.
+This roadmap transforms 35 v1 requirements into 4 deliverable phases. Each phase delivers a coherent, verifiable capability.
 
 ## Phases
 
 - [x] **Phase 1: Foundation** - Project setup, dependencies, and Tailwind configuration
 - [x] **Phase 2: Content & Design** - All sections with actual content
-- [ ] **Phase 3: Polish & Deploy** - Performance optimization, testing, and deployment
+- [ ] **Phase 3: UI Enhancement** - Gradient themes, creative text content
+- [ ] **Phase 4: Polish & Deploy** - Performance optimization, testing, and deployment
 
 ---
 
@@ -75,7 +76,30 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 
 ---
 
-### Phase 3: Polish & Deploy
+### Phase 3: UI Enhancement
+
+**Goal:** Aesthetic and professional portfolio with gradient themes and creative text content
+
+**Depends on:** Phase 2 (Content & Design)
+
+**Requirements:** UI-01, UI-02, UI-03, UI-04
+
+**Plans:** 2 plans
+
+**Plan list:**
+- [ ] 03-01-PLAN.md — Add gradient themes (purple→magenta→pink, Hero background/text, section accents)
+- [ ] 03-02-PLAN.md — Add terminal elements, creative text, witty programming lines
+
+**Success Criteria** (what must be TRUE):
+
+1. Gradient themes applied (classy gradients like Hacktoberfest style)
+2. Terminal/code aesthetic elements added
+3. Creative text content (e.g., "Send Request" instead of "Contact Me")
+4. Witty programming lines in sections
+
+---
+
+### Phase 4: Polish & Deploy
 
 **Goal:** Optimized, tested, and live portfolio website
 
@@ -94,8 +118,8 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 **Plans:** 2 plans
 
 **Plan list:**
-- [x] 03-polish-deploy-01-PLAN.md — SEO metadata and image optimization
-- [x] 03-polish-deploy-02-PLAN.md — Vercel deployment and Lighthouse verification
+- [x] 04-polish-deploy-01-PLAN.md — SEO metadata and image optimization
+- [x] 04-polish-deploy-02-PLAN.md — Vercel deployment and Lighthouse verification
 
 ---
 
@@ -105,20 +129,22 @@ This roadmap transforms 35 v1 requirements into 3 deliverable phases. Each phase
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | ✅ Complete | 2026-03-02 |
 | 2. Content & Design | 2/2 | ✅ Complete | 2026-03-02 |
-| 3. Polish & Deploy | 2/2 | ✅ Planned | - |
+| 3. UI Enhancement | 0/2 | Not started | - |
+| 4. Polish & Deploy | 2/2 | In progress | - |
 
 ---
 
 ## Coverage Notes
 
 **Total v1 requirements:** 35  
-**Mapped to phases:** 35 ✓
+**Mapped to phases:** 35 ✓ (plus 4 new UI enhancement requirements)
 
 | Phase | Requirements | Count |
 |-------|--------------|-------|
 | 1 - Foundation | STRU-01 to STRU-04 | 4 |
 | 2 - Content & Design | HERO, ABOT, EXPR, PROJ, SKIL, CONT, FOOT | 25 |
-| 3 - Polish & Deploy | PERF, SEO | 4 |
+| 3 - UI Enhancement | UI-01, UI-02, UI-03, UI-04 | 4 |
+| 4 - Polish & Deploy | PERF, SEO | 4 |
 
 **Note:** ABOT-02 appears twice in requirements list but maps to single phase requirement.
 
