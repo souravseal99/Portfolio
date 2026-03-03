@@ -12,21 +12,21 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 px-4 bg-gray-50 dark:bg-gray-900"
+      className="py-20 px-4 bg-[#e8e0d8] dark:bg-gray-900"
     >
       <div className="max-w-4xl mx-auto">
         {/* Terminal-style section header */}
         <div className="font-mono text-sm text-center mb-2">
-          <span className="text-purple-500">&lt;</span>
-          Skills
-          <span className="text-purple-500">/&gt;</span>
+          <span className="text-[#9a7999]">&lt;</span>
+          Tech Arsenal
+          <span className="text-[#9a7999]">/&gt;</span>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          Skills
+          Tech Arsenal
         </h2>
-        {/* Gradient accent */}
-        <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-8" />
+        {/* Gradient accent - Colorhunt palette */}
+        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {Object.entries(skills).map(([category, skillList]) => (
@@ -42,7 +42,7 @@ export default function Skills() {
                   <Badge
                     key={index}
                     variant="secondary"
-                    className="px-3 py-1 text-sm bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                    className="px-3 py-1 text-sm bg-[#d3e4cd] text-gray-800 dark:bg-[#adc2a9] dark:text-gray-900"
                   >
                     {skill}
                   </Badge>
@@ -50,6 +50,13 @@ export default function Skills() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Witty line */}
+        <div className="mt-8 text-center font-mono text-sm">
+          <p className="text-[#9a7999] dark:text-[#d3e4cd]">
+            <span className="text-gray-500">//</span> Skills: loaded successfully
+          </p>
         </div>
 
         <Separator className="mt-12" />
