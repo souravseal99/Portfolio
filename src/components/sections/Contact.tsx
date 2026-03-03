@@ -38,30 +38,30 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 px-4 bg-white dark:bg-black"
+      className="py-20 px-4 bg-[#fef5ed] dark:bg-black"
     >
       <div className="max-w-4xl mx-auto">
         {/* Terminal-style section header */}
         <div className="font-mono text-sm text-center mb-2">
-          <span className="text-purple-500">&lt;</span>
-          Contact
-          <span className="text-purple-500">/&gt;</span>
+          <span className="text-[#9a7999]">&lt;</span>
+          Send Request
+          <span className="text-[#9a7999]">/&gt;</span>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          Contact
+          Send Request
         </h2>
-        {/* Gradient accent */}
-        <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-8" />
+        {/* Gradient accent - Colorhunt palette */}
+        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {contacts.map((contact, index) => {
             const Icon = contact.icon;
             const content = (
-              <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-300">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-                    <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-[#d3e4cd] dark:bg-[#adc2a9] rounded-full flex items-center justify-center">
+                    <Icon className="h-6 w-6 text-gray-800 dark:text-gray-900" />
                   </div>
                 </div>
                 <div>
@@ -92,6 +92,13 @@ export default function Contact() {
               </div>
             );
           })}
+        </div>
+
+        {/* Witty line */}
+        <div className="mt-8 text-center font-mono text-sm">
+          <p className="text-[#9a7999] dark:text-[#d3e4cd]">
+            <span className="text-gray-500">//</span> Ready to collaborate!
+          </p>
         </div>
 
         <Separator className="mt-12" />
