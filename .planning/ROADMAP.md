@@ -107,19 +107,10 @@ This roadmap transforms 35 v1 requirements into 4 deliverable phases. Each phase
 
 **Requirements:** PERF-01, PERF-02, SEO-01, SEO-02
 
-**Success Criteria** (what must be TRUE):
-
-1. Page loads in under 3 seconds on desktop (verified via Lighthouse)
-2. Images are optimized (WebP format, lazy loading implemented)
-3. Meta title "Sourav Seal - Full-Stack Developer" and description are present
-4. Open Graph tags are present for social sharing
-5. Site is deployed and accessible at a public URL (Vercel)
-
-**Plans:** 2 plans
+**Plans:** 1 plan
 
 **Plan list:**
-- [x] 04-polish-deploy-01-PLAN.md — SEO metadata and image optimization
-- [x] 04-polish-deploy-02-PLAN.md — Vercel deployment and Lighthouse verification
+- [x] 04-polish-deploy-01-PLAN.md — Production build, Vercel deployment, Lighthouse verification
 
 ---
 
