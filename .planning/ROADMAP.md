@@ -84,7 +84,7 @@ This roadmap transforms 35 v1 requirements into 4 deliverable phases. Each phase
 
 **Requirements:** UI-01, UI-02, UI-03, UI-04
 
-**Plans:** 1 plan (redesign)
+**Plans:** 1/1 plans complete
 
 **Plan list:**
 - [x] 03-01-PLAN.md — Redesign: Colorhunt palette, Inter typography, tech jargon, witty lines, WCAG AA contrast
@@ -120,7 +120,7 @@ This roadmap transforms 35 v1 requirements into 4 deliverable phases. Each phase
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | ✅ Complete | 2026-03-02 |
 | 2. Content & Design | 2/2 | ✅ Complete | 2026-03-02 |
-| 3. UI Enhancement | 1/1 | ✅ Complete | 2026-03-03 |
+| 3. UI Enhancement | 1/1 | Complete    | 2026-03-03 |
 | 4. Polish & Deploy | 0/1 | Planned | - |
 
 ---
