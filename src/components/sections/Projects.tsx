@@ -1,112 +1,105 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Github, ExternalLink } from "lucide-react";
+"use client";
 
-const projects = [
-  {
-    title: "RoomMate",
-    description:
-      "Full-stack web application for managing shared living spaces - expenses, chores, inventory",
-    techStack: ["React + Vite + TypeScript", "Express", "Prisma", "PostgreSQL"],
-    github: "https://github.com/souravseal99/RoomMate",
-    featured: true,
-  },
-  {
-    title: "FunwithPhysics",
-    description: "Educational physics application",
-    techStack: ["JavaScript", "React"],
-    github: "https://github.com/souravseal99/FunwithPhysics",
-    featured: false,
-  },
-  {
-    title: "E-Com",
-    description: "E-commerce platform",
-    techStack: ["JavaScript", "React", "Node.js"],
-    github: "https://github.com/souravseal99/E-Com",
-    featured: false,
-  },
-];
+import { motion } from "framer-motion";
+import { RESUME_DATA } from "@/lib/constants";
+import { Folder, Github, ExternalLink, Code2, Layers } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="py-20 px-4 bg-[#fef5ed] dark:bg-black"
-    >
+    <section id="projects" className="py-24 px-4 bg-white/[0.01]">
       <div className="max-w-6xl mx-auto">
-        {/* Terminal-style section header */}
-        <div className="font-mono text-sm text-center mb-2">
-          <span className="text-[#9a7999]">&lt;</span>
-          Projects
-          <span className="text-[#9a7999]">/&gt;</span>
+        {/* Section Heading */}
+        <div className="flex items-center gap-3 mb-10 group cursor-default">
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-vibrant group-hover:neon-text-cyan transition-all">
+            <Folder size={20} />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
+              apps<span className="text-cyan-vibrant">.json</span>
+            </h2>
+            <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+              grep -r "production" ~/src/monolith/packages
+            </p>
+          </div>
         </div>
-        
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          Projects
-        </h2>
-        {/* Gradient accent - Colorhunt palette */}
-        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <Card
+        {/* JSON Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {RESUME_DATA.projects.map((project, index) => (
+            <motion.div
               key={index}
-              className={`bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 ${
-                project.featured ? "md:col-span-2 lg:col-span-2" : ""
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group glass-card overflow-hidden border border-white/5 hover:border-white/10 transition-all flex flex-col"
             >
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl text-gray-900 dark:text-white">
-                      {project.title}
-                    </CardTitle>
-                    {project.featured && (
-                      <Badge className="mt-2 bg-[#d3e4cd] text-gray-800 hover:bg-[#adc2a9]">
-                        Featured
-                      </Badge>
-                    )}
-                  </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                    aria-label="View on GitHub"
-                  >
-                    <Github className="h-6 w-6" />
+              {/* Card Header (JSON Key) */}
+              <div className="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-cyan-500" />
+                  <span className="text-[10px] font-mono text-muted-foreground">project_{index + 1}.json</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <a href={project.links.github} target="_blank" className="hover:text-cyan-vibrant transition-colors">
+                    <Github size={14} />
                   </a>
+                  <ExternalLink size={14} className="opacity-20 hover:opacity-100 transition-opacity cursor-pointer text-cyan-vibrant" />
                 </div>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech, techIndex) => (
-                    <Badge
-                      key={techIndex}
-                      variant="outline"
-                      className="border-[#adc2a9] text-gray-700 dark:text-gray-300"
-                    >
-                      {tech}
-                    </Badge>
+              </div>
+
+              {/* Card Content (JSON Format) */}
+              <div className="p-6 font-mono text-xs md:text-sm leading-relaxed whitespace-pre font-light">
+                <div><span className="text-purple-400">"{project.title}"</span>: {'{'}</div>
+                <div className="pl-4">
+                  <span className="text-muted-foreground/50">"summary"</span>: <span className="text-pink-400">"{project.description}"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-muted-foreground/50">"tech_stack"</span>: [
+                  {project.stack.split(", ").map((tech, i, arr) => (
+                    <span key={tech} className="inline-block">
+                      <span className="text-cyan-400">"{tech}"</span>{i < arr.length - 1 ? ", " : ""}
+                    </span>
                   ))}
+                  ],
                 </div>
-              </CardContent>
-            </Card>
+                <div className="pl-4">
+                  <span className="text-muted-foreground/50">"status"</span>: <span className="text-green-400">"deployed"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-muted-foreground/50">"featured"</span>: <span className="text-yellow-400">{project.featured ? "true" : "false"}</span>
+                </div>
+                <div>{'}'},</div>
+              </div>
+
+              {/* Hover Overlay: Preview Image or Technical Details */}
+              <div className="px-6 pb-6 mt-auto">
+                <div className="flex items-center gap-4 border-t border-white/5 pt-4 opacity-40 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <Layers size={12} className="text-cyan-vibrant" />
+                    <span>{project.stack.split(", ").length} Dependencies</span>
+                  </div>
+                  {project.stats && (
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <Code2 size={12} className="text-pink-vibrant" />
+                      <span>{project.stats.split(",")[0]}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
 
-        {/* Witty line */}
-        <div className="mt-8 text-center font-mono text-sm">
-          <p className="text-[#9a7999] dark:text-[#d3e4cd]">
-            <span className="text-gray-500">git checkout</span> projects <span className="text-gray-500">// Browse my work</span>
-          </p>
+          {/* New Project Placeholder */}
+          <div className="glass-card border border-dashed border-white/10 flex items-center justify-center p-12 opacity-30 hover:opacity-60 transition-all cursor-pointer group">
+            <div className="text-center space-y-4">
+              <div className="w-12 h-12 rounded-full border border-dashed border-white/20 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <Folder size={24} />
+              </div>
+              <p className="text-xs font-mono tracking-widest uppercase">Next Project Initialization...</p>
+            </div>
+          </div>
         </div>
-
-        <Separator className="mt-12" />
       </div>
     </section>
   );

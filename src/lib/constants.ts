@@ -26,9 +26,9 @@ export const RESUME_DATA = {
     linkedin: "in/sourav-seal",
     phone: "+91 6296822691",
     bio: [
-        "I am a Full-Stack Developer with 3+ years of experience at CloudKaptan, specializing in building scalable web applications.",
-        "Passionate about open-source, I've contributed to multiple projects and served as a maintainer for Hacktoberfest.",
-        "My expertise lies in the MERN stack, Next.js, and cloud-native development.",
+        "Full-stack engineer with 3+ years of experience bridging the gap between robust backends and high-fidelity frontends.",
+        "Currently building PROD-Ready web systems at CloudKaptan, with a deep focus on TypeScript, React, and Node.js.",
+        "Dedicated open-source contributor and Hacktoberfest maintainer, driven by the philosophy that scalable architecture starts with clean, maintainable code.",
     ],
     experience: [
         {

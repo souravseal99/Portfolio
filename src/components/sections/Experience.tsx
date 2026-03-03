@@ -1,98 +1,122 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { MapPin, Calendar } from "lucide-react";
+"use client";
 
-const experiences = [
-  {
-    company: "CloudKaptan",
-    role: "Full-Stack Developer",
-    duration: "June 2022 -- Present",
-    location: "Kolkata, India",
-    achievements: [
-      "Built and maintained full-stack web applications using React, Node.js, and MongoDB/PostgreSQL",
-      "Developed RESTful APIs and integrated third-party services for client projects",
-      "Collaborated with cross-functional teams to deliver feature-rich applications on time",
-      "Implemented authentication systems (JWT) and optimized database queries for performance",
-      "Contributed to open-source projects and participated in code reviews",
-    ],
-  },
-];
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { RESUME_DATA } from "@/lib/constants";
+import { Terminal, Calendar, MapPin, CheckCircle2, Info, ArrowUpRight } from "lucide-react";
 
 export default function Experience() {
+  const [mounted, setMounted] = useState(false);
+  const [hashes, setHashes] = useState<string[]>([]);
+
+  useEffect(() => {
+    setMounted(true);
+    // Generate hashes once on the client
+    const newHashes = RESUME_DATA.experience.map(() =>
+      Math.random().toString(36).substring(2, 10).toUpperCase()
+    );
+    setHashes(newHashes);
+  }, []);
+
   return (
-    <section
-      id="experience"
-      className="py-20 px-4 bg-[#e8e0d8] dark:bg-gray-900"
-    >
-      <div className="max-w-4xl mx-auto">
-        {/* Terminal-style section header */}
-        <div className="font-mono text-sm text-center mb-2">
-          <span className="text-[#9a7999]">&lt;</span>
-          Experience
-          <span className="text-[#9a7999]">/&gt;</span>
+    <section id="experience" className="py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Heading */}
+        <div className="flex items-center gap-3 mb-10 group cursor-default">
+          <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-vibrant group-hover:neon-text-pink transition-all">
+            <Terminal size={20} />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
+              career<span className="text-pink-vibrant">.log</span>
+            </h2>
+            <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+              tail -f /var/log/professional_growth
+            </p>
+          </div>
         </div>
-        
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-          Experience
-        </h2>
-        {/* Gradient accent - Colorhunt palette */}
-        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <Card
-              key={index}
-              className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-            >
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  <CardTitle className="text-2xl text-gray-900 dark:text-white">
-                    {exp.company}
-                  </CardTitle>
-                  <Badge variant="secondary" className="w-fit bg-[#d3e4cd] text-gray-800">
-                    {exp.duration}
-                  </Badge>
+        {/* Career Log Window */}
+        <div className="glass-card w-full border border-white/5 shadow-2xl flex flex-col overflow-hidden">
+          {/* Header */}
+          <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-1">
+                <div className="w-2 h-2 rounded-full bg-white/20" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
+              </div>
+              <span className="text-[10px] font-mono text-muted-foreground tracking-tight">VIEWER: /usr/bin/journalctl -u career</span>
+            </div>
+            <div className="flex items-center gap-4 text-[10px] font-mono text-muted-foreground/50">
+              <span>L: 14 C: 72</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          {/* Log Content */}
+          <div className="p-8 space-y-12 font-mono">
+            {RESUME_DATA.experience.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative pl-8 border-l border-white/10 pb-4 last:pb-0"
+              >
+                {/* Timeline Node */}
+                <div className={`absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full border border-background shadow-[0_0_10px_rgba(255,0,229,0.5)] ${index === 0 ? "bg-pink-vibrant animate-pulse" : "bg-white/20"}`} />
+
+                {/* Log Entry Header */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <span className="text-muted-foreground/30 text-xs">[{exp.duration.replace(" -- ", " -> ")}]</span>
+                    <span className="text-pink-vibrant text-xs font-bold uppercase tracking-widest">[DEPLOYED_SUCCESS]</span>
+                    <h3 className="text-xl font-bold tracking-tight text-foreground">{exp.role}</h3>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-4 text-xs">
+                    <div className="px-2 py-0.5 rounded bg-white/5 border border-white/5 text-cyan-400 flex items-center gap-1.5">
+                      <ArrowUpRight size={10} />
+                      @{exp.company}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-muted-foreground">
+                      <MapPin size={10} />
+                      {exp.location}
+                    </div>
+                  </div>
                 </div>
-                <p className="text-lg text-[#9a7999] dark:text-[#d3e4cd] font-medium">
-                  {exp.role}
-                </p>
-                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  {exp.location}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {exp.achievements.map((achievement, achIndex) => (
-                    <li
-                      key={achIndex}
-                      className="text-gray-700 dark:text-gray-300 flex items-start"
-                    >
-                      <span className="text-[#adc2a9] mr-2">•</span>
-                      {achievement}
-                    </li>
+
+                {/* Log Entry Body (Points) */}
+                <div className="space-y-4">
+                  {exp.points.map((point, i) => (
+                    <div key={i} className="flex gap-4 group">
+                      <div className="mt-1.5 shrink-0">
+                        <Info size={14} className="text-muted-foreground/30 group-hover:text-cyan-vibrant transition-colors" />
+                      </div>
+                      <p className="text-foreground/70 text-sm leading-relaxed max-w-3xl">
+                        {point}
+                      </p>
+                    </div>
                   ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </div>
 
-        <div className="mt-8 text-center">
-          <p className="text-xl font-semibold text-gray-900 dark:text-white">
-            3+ Years of Experience
-          </p>
-        </div>
+                {/* Status Indicator at bottom of entry */}
+                <div className="mt-6 flex items-center gap-2 text-[9px] uppercase tracking-widest text-muted-foreground/30 font-bold">
+                  <div className="w-1 h-3 bg-pink-500/20" />
+                  ENTRY_HASH: {mounted ? hashes[index] : "LOADING..."}
+                </div>
+              </motion.div>
+            ))}
 
-        {/* Witty line */}
-        <div className="mt-4 text-center font-mono text-sm">
-          <p className="text-[#9a7999] dark:text-[#d3e4cd]">
-            <span className="text-gray-500">printf</span>(&quot;Learning since %s&quot;, &quot;2019&quot;);
-          </p>
+            {/* Current Status Log */}
+            <div className="pt-8 border-t border-white/5">
+              <div className="flex items-center gap-3 text-cyan-vibrant/50 italic text-xs">
+                <span className="animate-pulse">●</span>
+                <span>System monitoring active... polling for new milestones...</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <Separator className="mt-12" />
       </div>
     </section>
   );

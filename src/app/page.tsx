@@ -22,7 +22,7 @@ export default function Home() {
 
       <main className="relative z-10 pt-24 pb-20 px-4 max-w-7xl mx-auto space-y-40">
         {/* Terminal Section */}
-        <section className="flex flex-col items-center gap-12">
+        <section id="about" className="flex flex-col items-center gap-12">
           <div className="text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-vibrant mb-2">
               <span className="relative flex h-2 w-2">
@@ -51,7 +51,6 @@ export default function Home() {
 
         {/* Existing Sections */}
         <div className="space-y-40">
-          <About />
           <Experience />
           <Projects />
           <Skills />

@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { GitBranch, Box, Code2, Globe } from "lucide-react";
+import { GitBranch, Box, Code2, Globe, Atom, Zap, Hexagon } from "lucide-react";
 
 const navItems = [
-  { name: "bio.md", href: "#about" },
-  { name: "apps.json", href: "#projects" },
-  { name: "career.log", href: "#experience" },
-  { name: "arsenal.txt", href: "#skills" },
-  { name: "connect.sh", href: "#contact" },
+  { name: "bio", href: "#about" },
+  { name: "apps", href: "#projects" },
+  { name: "career", href: "#experience" },
+  { name: "arsenal", href: "#skills" },
+  { name: "connect", href: "#contact" },
 ];
 
 export default function Header() {
@@ -25,12 +25,12 @@ export default function Header() {
             <span className="text-foreground/70">localhost:3000</span>
           </div>
           <div className="hidden sm:flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
-            <Code2 size={12} className="text-pink-vibrant" />
+            <Code2 size={12} className="text-pink-vibrant fill-pink-500/10" />
             <span className="text-foreground/70">node_v20.x</span>
           </div>
           <div className="hidden lg:flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
-            <Box size={12} className="text-purple-vibrant" />
-            <span className="text-foreground/70">next_v14</span>
+            <Atom size={12} className="text-purple-vibrant animate-[spin_10s_linear_infinite]" />
+            <span className="text-foreground/70">react_v18</span>
           </div>
         </div>
 
