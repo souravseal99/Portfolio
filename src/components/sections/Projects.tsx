@@ -32,27 +32,27 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 px-4 bg-white dark:bg-black"
+      className="py-20 px-4 bg-[#fef5ed] dark:bg-black"
     >
       <div className="max-w-6xl mx-auto">
         {/* Terminal-style section header */}
         <div className="font-mono text-sm text-center mb-2">
-          <span className="text-purple-500">&lt;</span>
+          <span className="text-[#9a7999]">&lt;</span>
           Projects
-          <span className="text-purple-500">/&gt;</span>
+          <span className="text-[#9a7999]">/&gt;</span>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           Projects
         </h2>
-        {/* Gradient accent */}
-        <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-8" />
+        {/* Gradient accent - Colorhunt palette */}
+        <div className="h-1 w-20 bg-gradient-to-r from-[#9a7999] to-[#adc2a9] rounded-full mx-auto mb-8" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className={`bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 ${
+              className={`bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 ${
                 project.featured ? "md:col-span-2 lg:col-span-2" : ""
               }`}
             >
@@ -63,7 +63,7 @@ export default function Projects() {
                       {project.title}
                     </CardTitle>
                     {project.featured && (
-                      <Badge className="mt-2 bg-blue-600 hover:bg-blue-700">
+                      <Badge className="mt-2 bg-[#d3e4cd] text-gray-800 hover:bg-[#adc2a9]">
                         Featured
                       </Badge>
                     )}
@@ -88,7 +88,7 @@ export default function Projects() {
                     <Badge
                       key={techIndex}
                       variant="outline"
-                      className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
+                      className="border-[#adc2a9] text-gray-700 dark:text-gray-300"
                     >
                       {tech}
                     </Badge>
@@ -97,6 +97,13 @@ export default function Projects() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Witty line */}
+        <div className="mt-8 text-center font-mono text-sm">
+          <p className="text-[#9a7999] dark:text-[#d3e4cd]">
+            <span className="text-gray-500">git checkout</span> projects <span className="text-gray-500">// Browse my work</span>
+          </p>
         </div>
 
         <Separator className="mt-12" />
