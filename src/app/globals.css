@@ -53,85 +53,62 @@ html {
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Colorhunt palette - Warm cream background */
-  --color-cream: #fef5ed;
-  --color-sage: #d3e4cd;
-  --color-taupe: #adc2a9;
-  --color-muted-purple: #9a7999;
-
-  /* Theme colors using Colorhunt palette */
-  --background: var(--color-cream);
-  --foreground: oklch(0.25 0 0); /* Dark gray for good contrast */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0 0);
-  --primary: var(--color-sage);
-  --primary-foreground: oklch(0.2 0 0); /* Dark text on sage */
-  --secondary: var(--color-taupe);
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.95 0 0);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: var(--color-muted-purple);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0 0);
-  --input: oklch(0.88 0 0);
-  --ring: var(--color-muted-purple);
-  --chart-1: var(--color-muted-purple);
-  --chart-2: var(--color-sage);
-  --chart-3: var(--color-taupe);
-  --chart-4: var(--color-sage);
-  --chart-5: var(--color-muted-purple);
-  --sidebar: var(--color-cream);
-  --sidebar-foreground: oklch(0.25 0 0);
-  --sidebar-primary: var(--color-sage);
-  --sidebar-primary-foreground: oklch(0.2 0 0);
-  --sidebar-accent: var(--color-taupe);
-  --sidebar-accent-foreground: oklch(0.15 0 0);
-  --sidebar-border: oklch(0.88 0 0);
-  --sidebar-ring: var(--color-muted-purple);
-
-  /* Gradient theme - Colorhunt palette */
-  --gradient-start: var(--color-muted-purple);
-  --gradient-mid: var(--color-taupe);
-  --gradient-end: var(--color-sage);
+  --radius: 0.5rem;
+  
+  /* Figma Inspired Palette - Dark & Vibrant */
+  --background: #0B0118;
+  --foreground: #F8FAFC;
+  
+  --color-cyan: #00F5FF;
+  --color-pink: #FF00E5;
+  --color-purple: #BD00FF;
+  --color-deep-purple: #1A0B2E;
+  
+  --card: #150826;
+  --card-foreground: #F8FAFC;
+  --popover: #150826;
+  --popover-foreground: #F8FAFC;
+  --primary: var(--color-cyan);
+  --primary-foreground: #0B0118;
+  --secondary: var(--color-purple);
+  --secondary-foreground: #F8FAFC;
+  --muted: #1A0B2E;
+  --muted-foreground: #94A3B8;
+  --accent: var(--color-pink);
+  --accent-foreground: #F8FAFC;
+  --destructive: #EF4444;
+  --border: #2D1B4D;
+  --input: #2D1B4D;
+  --ring: var(--color-cyan);
+  
+  /* Gradients */
+  --gradient-cyan-pink: linear-gradient(135deg, var(--color-cyan), var(--color-pink));
+  --gradient-purple-glow: radial-gradient(circle at center, rgba(189, 0, 255, 0.15) 0%, transparent 70%);
 }
 
-.dark {
-  /* Colorhunt palette dark mode - keeping cream/sage/taupe for consistency */
-  --background: oklch(0.15 0 0);
-  --foreground: var(--color-cream);
-  --card: oklch(0.2 0 0);
-  --card-foreground: var(--color-cream);
-  --popover: oklch(0.2 0 0);
-  --popover-foreground: var(--color-cream);
-  --primary: var(--color-sage);
-  --primary-foreground: oklch(0.2 0 0);
-  --secondary: var(--color-taupe);
-  --secondary-foreground: var(--color-cream);
-  --muted: oklch(0.25 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  --accent: var(--color-muted-purple);
-  --accent-foreground: var(--color-cream);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 15%);
-  --input: oklch(1 0 0 / 20%);
-  --ring: var(--color-muted-purple);
-  --chart-1: var(--color-muted-purple);
-  --chart-2: var(--color-sage);
-  --chart-3: var(--color-taupe);
-  --chart-4: var(--color-sage);
-  --chart-5: var(--color-muted-purple);
-  --sidebar: oklch(0.15 0 0);
-  --sidebar-foreground: var(--color-cream);
-  --sidebar-primary: var(--color-sage);
-  --sidebar-primary-foreground: oklch(0.2 0 0);
-  --sidebar-accent: var(--color-taupe);
-  --sidebar-accent-foreground: var(--color-cream);
-  --sidebar-border: oklch(1 0 0 / 15%);
-  --sidebar-ring: var(--color-muted-purple);
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cyan-vibrant: var(--color-cyan);
+  --color-pink-vibrant: var(--color-pink);
+  --color-purple-vibrant: var(--color-purple);
+  --color-deep-bg: var(--color-deep-purple);
+  
+  --background-image-gradient-main: var(--gradient-cyan-pink);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 }
 
 @layer base {
@@ -139,6 +116,47 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-cyan-vibrant/30 selection:text-cyan-vibrant;
+    background-image: var(--gradient-purple-glow);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-md border border-white/10 rounded-xl;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .terminal-text {
+    @apply font-mono text-sm leading-relaxed;
+  }
+  
+  .neon-text-cyan {
+    @apply text-cyan-vibrant;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+  }
+  
+  .neon-text-pink {
+    @apply text-pink-vibrant;
+    text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: var(--radius);
+    background: var(--background);
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: var(--gradient-cyan-pink);
   }
 }
