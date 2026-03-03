@@ -5,11 +5,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900"
+      className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900"
     >
-      <div className="text-center max-w-3xl">
-        {/* Name */}
-        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+      {/* Gradient background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-600 opacity-10 pointer-events-none" />
+      
+      <div className="text-center max-w-3xl relative z-10">
+        {/* Name with gradient text */}
+        <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 mb-4 tracking-tight">
           Sourav Seal
         </h1>
 
