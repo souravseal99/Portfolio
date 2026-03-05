@@ -6,8 +6,8 @@ import { GitBranch, Box, Code2, Globe, Atom, Zap, Hexagon } from "lucide-react";
 
 const navItems = [
   { name: "bio", href: "#about" },
-  { name: "apps", href: "#projects" },
   { name: "career", href: "#experience" },
+  { name: "apps", href: "#projects" },
   { name: "arsenal", href: "#skills" },
   { name: "connect", href: "#contact" },
 ];

@@ -33,14 +33,13 @@ export default function Home() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-              <span className="text-foreground">Sourav</span>
+              <span className="text-foreground">Sourav </span>
               <span className="neon-text-cyan">Seal</span>
-              <span className="text-foreground/30 font-light">.tsx</span>
             </h1>
 
             <p className="text-muted-foreground font-mono text-sm max-w-xl mx-auto leading-relaxed">
               Fullstack Engineer building high-fidelity web systems at <span className="text-pink-vibrant">CloudKaptan</span>.
-              Currently shipping production React & Node.js code.
+              Currently shipping production ready React & Node.js systems.
             </p>
           </div>
 
@@ -50,7 +49,7 @@ export default function Home() {
         </section>
 
         {/* Existing Sections */}
-        <div className="space-y-40">
+        <div className="space-y-10">
           <Experience />
           <Projects />
           <Skills />

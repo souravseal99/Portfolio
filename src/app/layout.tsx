@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Sourav Seal - Full-Stack Developer",
     description:
       "Full-Stack Developer at CloudKaptan with 3+ years experience building scalable web applications.",
-    url: "https://souravseal.vercel.app",
+    url: "https://souravseal99.vercel.app",
     siteName: "Sourav Seal Portfolio",
     locale: "en_US",
     type: "website",

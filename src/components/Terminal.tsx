@@ -34,7 +34,7 @@ const Terminal: React.FC = () => {
 
         // Initial boot sequence with frozen timestamp
         setHistory([
-            { type: "input", content: "cat bio.md", timestamp: initialTime },
+            { type: "input", content: "cat bio.txt", timestamp: initialTime },
             ...RESUME_DATA.bio.map(line => ({ type: "output", content: line } as TerminalLine)),
             { type: "info", content: "TIP: Type 'help' to see files. Use [TAB] to autocomplete." },
         ]);
@@ -176,7 +176,7 @@ const Terminal: React.FC = () => {
                 </span>
                 <span className="text-muted-foreground flex items-center gap-1">
                     <Home size={12} strokeWidth={2.5} />
-                    [~/test-app/my-app]
+                    [~/Projects/Portfolio]
                 </span>
                 <span className="text-pink-400 flex items-center gap-1 bg-white/5 px-2 py-0.5 rounded border border-white/5">
                     <GitBranch size={10} />

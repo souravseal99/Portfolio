@@ -33,7 +33,7 @@ export const RESUME_DATA = {
     experience: [
         {
             company: "CloudKaptan",
-            role: "Full-Stack Developer",
+            role: "Software Engineer",
             duration: "June 2023 -- Present",
             location: "Kolkata, India",
             points: [
