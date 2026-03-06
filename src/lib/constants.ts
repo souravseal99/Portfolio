@@ -47,29 +47,37 @@ export const RESUME_DATA = {
     projects: [
         {
             title: "RoomMate",
-            description: "Full-stack web application for managing shared living spaces - expenses, chores, inventory.",
-            stack: "React + Vite + TypeScript, Express, Prisma, PostgreSQL",
+            summary: "Makes shared living space less chaotic_.",
+            description: "Full-stack web application designed to help roommates manage shared living more easily. It features modules for tracking expenses, assigning chores, and managing shared inventory with real-time household statistics.",
+            stack: "React, Vite, TypeScript, Express, Prisma, PostgreSQL",
             links: {
                 github: "https://github.com/souravseal99/RoomMate",
             },
             featured: true,
-            stats: "182+ commits, 27 forks",
+            stats: "182 commits, 26 forks, 12.4k lines changed",
+            ownership: 98,
         },
         {
             title: "FunwithPhysics",
-            description: "Contributed to an educational physics application.",
-            stack: "JavaScript, React",
+            summary: "Complex physics calculations made simple_.",
+            description: "An educational physics calculator that allows users to enter values and obtain results instantly using verified formulas. Features a responsive UI and accurate calculation backend.",
+            stack: "HTML5, CSS3, React, Bootstrap, PHP",
             links: {
                 github: "https://github.com/souravseal99/FunwithPhysics",
             },
+            stats: "1.5k commits, 214 forks, 8.2k lines changed",
+            ownership: 94,
         },
         {
             title: "E-Com",
-            description: "E-commerce platform built with JavaScript technologies.",
-            stack: "JavaScript, React",
+            summary: "Complete E-commerce solution with backend and frontend_.",
+            description: "A comprehensive MERN stack e-commerce platform featuring a robust backend API and a dynamic frontend. Includes product management, shopping cart functionality, and user authentication.",
+            stack: "JavaScript, React, Node.js, Express, MongoDB",
             links: {
                 github: "https://github.com/souravseal99/E-Com",
             },
+            stats: "96 commits, 0 forks, 4.8k lines changed",
+            ownership: 88,
         },
     ],
     skills: {
