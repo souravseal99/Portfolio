@@ -37,7 +37,10 @@ import {
   Boxes,
   FileCode2,
   Coffee,
-  DatabaseZap
+  DatabaseZap,
+  Cloud,
+  Menu,
+  X
 } from "lucide-react";
 
 const CATEGORY_ICONS: Record<string, any> = {
@@ -127,6 +130,7 @@ const SERVICE_DESCRIPTIONS: Record<string, string> = {
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const categories = useMemo(() => ["all", ...Object.keys(RESUME_DATA.skills)], []);
 
@@ -150,11 +154,11 @@ export default function Skills() {
         {/* Section Heading */}
         <div className="flex items-center gap-3 mb-10 group cursor-default">
           <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-vibrant group-hover:neon-text-purple transition-all">
-            <LayoutGrid size={20} />
+            <Cloud size={20} />
           </div>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              Arsenal<span className="text-purple-vibrant"> Cloud</span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
+              Arsenal<span className="text-purple-vibrant ml-2">Cloud</span>
             </h2>
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               Skill Management / Global Console
@@ -168,9 +172,19 @@ export default function Skills() {
           {/* Mock AWS Toolbar */}
           <div className="bg-[#232f3e] px-4 py-2.5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-6 flex-1">
-              <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded bg-orange-500 flex items-center justify-center text-white font-black text-xs ring-1 ring-white/20 shadow-lg select-none">sC</div>
-                <span className="hidden sm:inline text-white font-bold text-sm tracking-tight pt-1 px-1">sCloud Console</span>
+              <div className="flex items-center gap-1.5 transition-opacity">
+                {/* Mobile Menu Icon */}
+                <div
+                  className="md:hidden w-8 h-8 rounded bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-vibrant shadow-lg select-none hover:bg-orange-500/30 transition-all cursor-pointer"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                  {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                </div>
+
+                {/* Desktop sC Icon */}
+                <div className="hidden md:flex w-8 h-8 rounded bg-orange-500 items-center justify-center text-white font-black text-xs ring-1 ring-white/20 shadow-lg select-none">sC</div>
+
+                <span className="hidden lg:inline text-white font-bold text-sm tracking-tight pt-1 px-1">sCloud Console</span>
               </div>
 
               {/* Mock Search Bar */}
@@ -205,7 +219,54 @@ export default function Skills() {
             </div>
           </div>
 
-          <div className="flex flex-1 overflow-hidden">
+          <div className="flex flex-1 overflow-hidden relative">
+            {/* Mobile Sidebar Overlay */}
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+                  />
+                  <motion.div
+                    initial={{ x: -260 }}
+                    animate={{ x: 0 }}
+                    exit={{ x: -260 }}
+                    className="absolute top-0 left-0 bottom-0 w-64 bg-[#161b22] border-r border-orange-500/20 z-50 md:hidden flex flex-col pt-4"
+                  >
+                    <div className="p-4">
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Skill cloud services</h3>
+                        <button onClick={() => setIsMobileMenuOpen(false)} className="text-white/20 hover:text-white transition-colors">
+                          <X size={16} />
+                        </button>
+                      </div>
+                      <div className="space-y-1">
+                        {categories.map((cat) => (
+                          <button
+                            key={cat}
+                            onClick={() => {
+                              setActiveCategory(cat);
+                              setIsMobileMenuOpen(false);
+                            }}
+                            className={`w-full flex items-center justify-between px-3 py-3 text-[13px] font-medium rounded-lg transition-all ${activeCategory === cat
+                              ? "bg-orange-500/10 text-orange-vibrant border border-orange-500/20"
+                              : "text-white/40 hover:bg-white/5 hover:text-white"
+                              }`}
+                          >
+                            <span className="capitalize">{cat}</span>
+                            {activeCategory === cat && <ChevronRight size={14} />}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
             {/* Sidebar Navigation */}
             <div className="w-64 border-r border-white/5 bg-[#161b22]/40 hidden md:flex flex-col shrink-0">
               <div className="p-4">
@@ -330,7 +391,7 @@ export default function Skills() {
                               {skill.name}
                             </h3>
                             <div className="flex items-center gap-2">
-                              <span className="text-[9px] text-white/20 font-mono uppercase tracking-widest hidden group-hover:inline">Connect</span>
+                              <span className="text-[9px] text-white/20 font-mono uppercase tracking-widest hidden group-hover:lg:inline">Connect</span>
                               <ExternalLink size={14} className="text-white/10 group-hover:text-cyan-vibrant transition-colors" />
                             </div>
                           </div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { RESUME_DATA } from "@/lib/constants";
-import { CheckCircle2, ChevronDown, ChevronRight, GitBranch, Wifi } from "lucide-react";
+import { CheckCircle2, ChevronDown, ChevronRight, Terminal, Wifi } from "lucide-react";
 
 // Deterministic "fake" timestamps seeded from entry + line index
 function getLogTimestamp(entryIdx: number, lineIdx: number): string {
@@ -53,11 +53,11 @@ export default function Experience() {
         {/* Section Heading */}
         <div className="flex items-center gap-3 mb-10 group cursor-default">
           <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-vibrant group-hover:neon-text-pink transition-all">
-            <GitBranch size={20} />
+            <Terminal size={20} />
           </div>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              career<span className="text-pink-vibrant">.log</span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
+              Career<span className="text-pink-vibrant ml-2">Log</span>
             </h2>
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               deploy pipeline / professional_history
@@ -166,11 +166,11 @@ export default function Experience() {
 
                         {/* Step header line */}
                         <div className="flex items-center gap-3 px-5 py-1 mb-1 border-b border-white/5 pb-2">
-                          <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 font-mono">00</span>
-                          <span className="text-muted-foreground/50 w-28 shrink-0 select-none">
+                          <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 font-mono hidden sm:block">00</span>
+                          <span className="text-muted-foreground/50 w-28 shrink-0 select-none hidden sm:block">
                             {mounted ? getLogTimestamp(index, 0) : "--:--:--.---"}
                           </span>
-                          <span className="text-purple-vibrant/70 font-bold w-14 shrink-0">[STEP]</span>
+                          <span className="text-purple-vibrant/70 font-bold w-10 sm:w-14 shrink-0 text-[10px] sm:text-sm">[STEP]</span>
                           <span className="text-muted-foreground/60">
                             Running job: <span className="text-foreground/60 italic">{exp.role}</span>
                           </span>
@@ -187,17 +187,17 @@ export default function Experience() {
                             className="flex items-start gap-3 px-5 py-[5px] hover:bg-white/[0.02] transition-colors group/line"
                           >
                             {/* Line number */}
-                            <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 group-hover/line:text-muted-foreground/60 transition-colors">
+                            <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 group-hover/line:text-muted-foreground/60 transition-colors hidden sm:block">
                               {String(i + 1).padStart(2, "0")}
                             </span>
 
                             {/* Timestamp */}
-                            <span className="text-muted-foreground/50 w-28 shrink-0 select-none">
+                            <span className="text-muted-foreground/50 w-28 shrink-0 select-none hidden sm:block">
                               {mounted ? getLogTimestamp(index, i + 1) : "--:--:--.---"}
                             </span>
 
                             {/* Log level */}
-                            <span className="text-cyan-vibrant/70 font-bold w-14 shrink-0 group-hover/line:text-cyan-vibrant transition-colors">
+                            <span className="text-cyan-vibrant/70 font-bold w-10 sm:w-14 shrink-0 group-hover/line:text-cyan-vibrant transition-colors text-[10px] sm:text-sm">
                               [INFO]
                             </span>
 
@@ -210,10 +210,10 @@ export default function Experience() {
 
                         {/* Exit / footer line */}
                         <div className="flex items-center gap-3 px-5 pt-3 mt-1 border-t border-white/5">
-                          <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 font-mono">
+                          <span className="text-muted-foreground/40 w-6 text-right select-none shrink-0 font-mono hidden sm:block">
                             {String(exp.points.length + 1).padStart(2, "0")}
                           </span>
-                          <span className="text-muted-foreground/50 w-28 shrink-0 select-none">
+                          <span className="text-muted-foreground/50 w-28 shrink-0 select-none hidden sm:block">
                             {mounted ? getLogTimestamp(index, exp.points.length + 1) : "--:--:--.---"}
                           </span>
                           <span className="flex items-center gap-3 text-muted-foreground/35 text-xs tracking-wider">
@@ -235,7 +235,7 @@ export default function Experience() {
           {/* Panel Footer — monitoring active */}
           <div className="bg-black/10 border-t border-white/5 px-5 py-3 font-mono text-xs flex items-center gap-3 text-muted-foreground/40">
             <span className="w-6 shrink-0" />
-            <span className="w-28 shrink-0 select-none">
+            <span className="w-28 shrink-0 select-none hidden sm:block">
               {mounted ? getLogTimestamp(RESUME_DATA.experience.length, 0) : "--:--:--.---"}
             </span>
             <span className="text-cyan-vibrant/50 font-bold w-14 shrink-0">[SYS]</span>

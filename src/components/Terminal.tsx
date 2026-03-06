@@ -34,7 +34,7 @@ const Terminal: React.FC = () => {
 
         // Initial boot sequence with frozen timestamp
         setHistory([
-            { type: "input", content: "cat bio.txt", timestamp: initialTime },
+            { type: "input", content: "cat ReadMe.txt", timestamp: initialTime },
             ...RESUME_DATA.bio.map(line => ({ type: "output", content: line } as TerminalLine)),
             { type: "info", content: "TIP: Type 'help' to see files. Use [TAB] to autocomplete." },
         ]);

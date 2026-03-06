@@ -37,8 +37,8 @@ export default function Projects() {
             <Monitor size={20} />
           </div>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              Projects
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
+              Projects<span className="text-cyan-vibrant ml-2">IDE</span>
             </h2>
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               browse / home / src / projects
@@ -203,17 +203,17 @@ export default function Projects() {
                         </div>
 
                         {/* Social/Link actions */}
-                        <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+                        <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-white/5">
                           <a
                             href={activeProject.links.github}
                             target="_blank"
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-vibrant text-background font-bold text-sm transition-transform hover:scale-105"
+                            className="flex items-center gap-3 px-5 py-2.5 rounded-lg bg-cyan-vibrant text-background font-bold text-sm transition-transform hover:scale-105 whitespace-nowrap"
                           >
-                            <Github size={18} />
+                            <Github size={18} className="shrink-0" />
                             Source Code
                           </a>
-                          <button className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-foreground text-sm font-medium hover:bg-white/10 transition-colors opacity-50 cursor-not-allowed">
-                            <ExternalLink size={18} />
+                          <button className="flex items-center gap-3 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-foreground text-sm font-medium hover:bg-white/10 transition-colors opacity-50 cursor-not-allowed whitespace-nowrap">
+                            <ExternalLink size={18} className="shrink-0" />
                             Live Demo
                           </button>
                         </div>
@@ -296,12 +296,12 @@ export default function Projects() {
                     <GitBranch size={10} />
                     <span>main*</span>
                   </div>
-                  <div className="flex items-center gap-1 text-background text-[10px] font-bold opacity-80">
+                  <div className="hidden sm:flex items-center gap-1 text-background text-[10px] font-bold opacity-80">
                     <Wifi size={10} />
                     <span>Connected</span>
                   </div>
                 </div>
-                <div className="text-background text-[10px] font-mono font-bold italic opacity-90">
+                <div className="hidden md:block text-background text-[10px] font-mono font-bold italic opacity-90">
                   UTF-8 | Markdown | Line 1, Col 1
                 </div>
               </div>

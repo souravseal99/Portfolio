@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RESUME_DATA } from "@/lib/constants";
 import {
@@ -43,6 +43,17 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "", priority: "P0 - CRITICAL" });
   const [isSending, setIsSending] = useState(false);
   const [response, setResponse] = useState<null | { status: number; text: string }>(null);
+  const scrollRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({
+        behavior: "instant",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeEndpoint]);
 
   const handleSend = () => {
     if (activeEndpoint.method === "GET") {
@@ -71,7 +82,7 @@ export default function Contact() {
               <Globe size={24} />
             </div>
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-white uppercase italic">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
                 Connection<span className="text-[#1f6feb] ml-2">API</span>
               </h2>
               <div className="flex items-center gap-2 mt-1">
@@ -100,10 +111,10 @@ export default function Contact() {
         </div>
 
         {/* Postman-like Sidebar + Main Workspace */}
-        <div className="flex h-[720px] bg-[#161b22]/40 backdrop-blur-sm border border-[#30363d] rounded-xl overflow-hidden shadow-2xl flex-col md:flex-row">
+        <div className="flex h-[850px] md:h-[720px] bg-[#161b22]/40 backdrop-blur-sm border border-[#30363d] rounded-xl overflow-hidden shadow-2xl flex-col md:flex-row">
 
-          {/* Collection Sidebar */}
-          <div className="w-64 bg-[#161b22]/50 border-r border-[#30363d] flex flex-col shrink-0">
+          {/* Collection Sidebar - Hidden on mobile */}
+          <div className="w-64 bg-[#161b22]/50 border-r border-[#30363d] hidden lg:flex flex-col shrink-0">
             <div className="p-4 border-b border-[#30363d] flex items-center justify-between">
               <span className="text-[10px] font-bold text-white/50 tracking-wider uppercase">Collections</span>
               <div className="flex gap-2">
@@ -119,7 +130,7 @@ export default function Contact() {
                 <span className="text-xs font-semibold text-white/80">Connection APIs v1.0</span>
               </div>
 
-              <div className="space-y-0.5 ml-4 border-l border-white/5 pl-2">
+              <div className="space-y-0.5 ml-4 border-l border-white/5 px-2">
                 {ENDPOINTS.map((endpoint) => (
                   <button
                     key={endpoint.id}
@@ -153,18 +164,37 @@ export default function Contact() {
 
           {/* Request Workspace */}
           <div className="flex-1 flex flex-col min-w-0 bg-[#0d1117]">
-            {/* Nav Bar */}
-            <div className="flex items-center gap-2 px-4 h-12 border-b border-[#30363d] overflow-x-auto no-scrollbar">
-              <div className="flex items-center gap-2 px-3 py-1 bg-[#1f6feb]/20 rounded border border-[#1f6feb]/30 border-b-transparent relative shrink-0">
+            {/* Nav Bar / Mobile Selector */}
+            <div className="flex items-center h-12 border-b border-[#30363d] overflow-x-auto no-scrollbar bg-black/20">
+              {/* Mobile Endpoint Selector (Tabs) */}
+              <div className="lg:hidden flex gap-2 px-4">
+                {ENDPOINTS.map((endpoint) => (
+                  <button
+                    key={endpoint.id}
+                    ref={activeEndpoint.id === endpoint.id ? scrollRef : null}
+                    onClick={() => {
+                      setActiveEndpoint(endpoint);
+                      setResponse(null);
+                    }}
+                    className={`shrink-0 px-3 py-1 rounded text-[10px] font-mono border transition-all ${activeEndpoint.id === endpoint.id
+                      ? "bg-[#1f6feb]/20 border-[#1f6feb]/40 text-[#1f6feb]"
+                      : "bg-white/5 border-white/5 text-white/40"
+                      }`}
+                  >
+                    {endpoint.name}
+                  </button>
+                ))}
+              </div>
+
+              <div className="hidden lg:flex items-center gap-2 px-4 py-1 bg-[#1f6feb]/20 rounded border border-[#1f6feb]/30 border-b-transparent relative shrink-0">
                 <span className={`text-[9px] font-bold ${activeEndpoint.method === "GET" ? "text-green-400" : "text-orange-400"}`}>{activeEndpoint.method}</span>
                 <span className="text-[11px] text-white/90 font-medium">{activeEndpoint.name}</span>
                 <span className="ml-2 text-[10px] text-white/30">×</span>
               </div>
-              <button className="p-2 text-white/20 hover:text-white/50">+</button>
             </div>
 
             {/* URL Bar Area */}
-            <div className="p-4 flex gap-2 border-b border-[#30363d] bg-black/10">
+            <div className="p-4 flex flex-col sm:flex-row gap-2 border-b border-[#30363d] bg-black/10">
               <div className="flex-1 flex gap-px rounded overflow-hidden border border-[#30363d]">
                 <div className="bg-[#161b22] px-3 py-2 flex items-center gap-2 border-r border-[#30363d]">
                   <span className={`text-xs font-bold ${activeEndpoint.method === "GET" ? "text-green-400" : "text-orange-400"}`}>{activeEndpoint.method}</span>
@@ -174,10 +204,11 @@ export default function Contact() {
                   {activeEndpoint.url}
                 </div>
               </div>
+              {/* Send button - Hidden on mobile, shown on desktop */}
               <button
                 onClick={handleSend}
                 disabled={isSending}
-                className="bg-[#1f6feb] hover:bg-[#388bfd] text-white px-8 py-2 rounded text-xs font-bold tracking-wider flex items-center gap-2 disabled:opacity-50 transition-all active:scale-95 shrink-0"
+                className="hidden sm:flex bg-[#1f6feb] hover:bg-[#388bfd] text-white px-8 py-2 rounded text-xs font-bold tracking-wider items-center justify-center gap-2 disabled:opacity-50 transition-all active:scale-95 shrink-0"
               >
                 {isSending ? <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" /> : <Send size={14} />}
                 {activeEndpoint.method === "GET" ? "VISIT" : "SEND"}
@@ -185,11 +216,11 @@ export default function Contact() {
             </div>
 
             {/* Tabs Area */}
-            <div className="flex border-b border-[#30363d] px-4 gap-6">
+            <div className="flex border-b border-[#30363d] px-4 gap-6 overflow-x-auto no-scrollbar shrink-0">
               {["Docs", "Params", "Auth", "Headers", "Body", "Scripts", "Settings"].map((tab) => (
                 <button
                   key={tab}
-                  className={`text-[11px] py-3 relative font-medium transition-colors ${tab === (activeEndpoint.method === "GET" ? "Docs" : "Body") ? "text-[#1f6feb]" : "text-white/40 hover:text-white"}`}
+                  className={`text-[11px] py-3 relative font-medium transition-colors shrink-0 ${tab === (activeEndpoint.method === "GET" ? "Docs" : "Body") ? "text-[#1f6feb]" : "text-white/40 hover:text-white"}`}
                 >
                   {tab}
                   {tab === (activeEndpoint.method === "GET" ? "Docs" : "Body") && (
@@ -228,9 +259,9 @@ export default function Contact() {
                         ))}
                       </div>
 
-                      {/* form-data table */}
+                      {/* form-data grid for mobile / table for desktop */}
                       <div className="border border-[#30363d] rounded-sm overflow-hidden text-[11px] font-mono">
-                        <div className="flex border-b border-[#30363d] bg-white/[0.02] text-white/50 py-2">
+                        <div className="hidden sm:flex border-b border-[#30363d] bg-white/[0.02] text-white/50 py-2">
                           <div className="w-10 pl-2 flex justify-center"><input type="checkbox" checked readOnly className="opacity-40" /></div>
                           <div className="w-1/4 px-4 border-r border-[#30363d]">Key</div>
                           <div className="w-1/3 px-4 border-r border-[#30363d]">Value</div>
@@ -256,10 +287,15 @@ export default function Contact() {
                           },
                           { key: "message", label: "payload", val: formData.message, set: (v: string) => setFormData({ ...formData, message: v }), desc: "Core message content", area: true }
                         ].map((row, i) => (
-                          <div key={row.key} className="flex border-b border-[#30363d] group hover:bg-white/[0.01]">
-                            <div className="w-10 flex justify-center py-3"><input type="checkbox" checked readOnly /></div>
-                            <div className="w-1/4 px-4 py-3 border-r border-[#30363d] text-orange-300 font-semibold">{row.label}</div>
-                            <div className="w-1/3 px-4 py-1.5 border-r border-[#30363d]">
+                          <div key={row.key} className="flex flex-col sm:flex-row border-b border-[#30363d] group hover:bg-white/[0.01]">
+                            <div className="hidden sm:flex w-10 justify-center py-3 border-r border-[#30363d]"><input type="checkbox" checked readOnly /></div>
+
+                            <div className="flex items-center justify-between px-4 py-2 sm:py-3 sm:w-1/4 border-b sm:border-b-0 sm:border-r border-[#30363d] bg-white/[0.01] sm:bg-transparent">
+                              <span className="text-orange-300 font-semibold">{row.label}</span>
+                              <span className="sm:hidden text-white/20 text-[9px] uppercase tracking-tighter">Key</span>
+                            </div>
+
+                            <div className="px-4 py-2 sm:py-1.5 sm:w-1/3 border-b sm:border-b-0 sm:border-r border-[#30363d] min-h-[40px]">
                               {row.dropdown ? (
                                 <select
                                   value={row.val}
@@ -275,7 +311,7 @@ export default function Contact() {
                                   value={row.val}
                                   onChange={(e) => row.set(e.target.value)}
                                   placeholder="Type message content..."
-                                  className="bg-transparent w-full text-white/80 outline-none resize-none pt-1.5 no-scrollbar min-h-[60px]"
+                                  className="bg-transparent w-full text-white/80 outline-none resize-none pt-1.5 no-scrollbar min-h-[100px] sm:min-h-[60px]"
                                 />
                               ) : (
                                 <input
@@ -287,16 +323,31 @@ export default function Contact() {
                                 />
                               )}
                             </div>
-                            <div className="flex-1 px-4 py-3 text-white/30 truncate">{row.desc}</div>
+                            <div className="flex-1 px-4 py-2 sm:py-3 text-white/30 truncate sm:overflow-visible">
+                              <span className="sm:hidden mr-2 opacity-50 italic">Desc:</span>
+                              {row.desc}
+                            </div>
                           </div>
                         ))}
 
-                        <div className="flex opacity-20 bg-black/40">
+                        <div className="hidden sm:flex opacity-20 bg-black/40">
                           <div className="w-10 flex justify-center py-3"></div>
                           <div className="w-1/4 px-4 py-3 border-r border-[#30363d]">Key</div>
                           <div className="w-1/3 px-4 py-3 border-r border-[#30363d]">Value</div>
                           <div className="flex-1 px-4 py-3">Description</div>
                         </div>
+                      </div>
+
+                      {/* Mobile Submit Button - Only visible on small screens */}
+                      <div className="sm:hidden mt-6 pb-2">
+                        <button
+                          onClick={handleSend}
+                          disabled={isSending}
+                          className="w-full bg-[#1f6feb] hover:bg-[#388bfd] text-white py-4 rounded-lg text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-3 disabled:opacity-50 transition-all active:scale-[0.98] shadow-lg shadow-[#1f6feb]/20"
+                        >
+                          {isSending ? <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" /> : <Send size={16} />}
+                          SEND PAYLOAD
+                        </button>
                       </div>
                     </div>
                   ) : (
@@ -310,6 +361,17 @@ export default function Contact() {
                         <p className="text-sm text-white/60 leading-relaxed font-mono">
                           {activeEndpoint.description}.
                         </p>
+                      </div>
+
+                      {/* Mobile Visit Button - Only visible on small screens for GET requests */}
+                      <div className="sm:hidden mt-2">
+                        <button
+                          onClick={handleSend}
+                          className="w-full bg-[#1f6feb] hover:bg-[#388bfd] text-white py-4 rounded-lg text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-lg shadow-[#1f6feb]/20"
+                        >
+                          <Send size={16} />
+                          VISIT ENDPOINT
+                        </button>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -338,21 +400,23 @@ export default function Contact() {
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                             className={`relative z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-colors duration-500 ${activeEndpoint.id === 'twitter' ? 'text-sky-400' : activeEndpoint.id === 'discord' ? 'text-indigo-400' : activeEndpoint.id === 'github' ? 'text-pink-400' : activeEndpoint.id === 'linkedin' ? 'text-blue-400' : 'text-cyan-400'}`}
                           >
-                            {activeEndpoint.id === 'twitter' && <Twitter size={84} strokeWidth={1.2} />}
-                            {activeEndpoint.id === 'discord' && <MessageSquare size={84} strokeWidth={1.2} />}
-                            {activeEndpoint.id === 'github' && <Github size={84} strokeWidth={1.2} />}
-                            {activeEndpoint.id === 'linkedin' && <Linkedin size={84} strokeWidth={1.2} />}
-                            {activeEndpoint.id === 'email' && <Mail size={84} strokeWidth={1.2} />}
+                            <div className="w-24 h-24 flex items-center justify-center">
+                              {activeEndpoint.id === 'twitter' && <img src="https://cdn.simpleicons.org/x/white" className="w-20 h-20 object-contain opacity-90" alt="X" />}
+                              {activeEndpoint.id === 'discord' && <img src="https://cdn.simpleicons.org/discord/white" className="w-20 h-20 object-contain opacity-90" alt="Discord" />}
+                              {activeEndpoint.id === 'github' && <img src="https://cdn.simpleicons.org/github/white" className="w-20 h-20 object-contain opacity-90" alt="GitHub" />}
+                              {activeEndpoint.id === 'linkedin' && <Linkedin size={84} strokeWidth={1.2} />}
+                              {activeEndpoint.id === 'email' && <Mail size={84} strokeWidth={1.2} />}
+                            </div>
                           </motion.div>
 
                           <div className="mt-8 flex flex-col items-center gap-2">
                             <div className="h-[2px] w-12 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                            <span className="text-[7px] font-mono tracking-[0.5em] text-white/20 uppercase">Awaiting Visitor Entry</span>
+                            <span className="text-[7px] font-mono tracking-[0.5em] text-white/20 uppercase text-center max-w-[200px]">Awaiting Visitor Entry</span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="p-4 bg-orange-400/5 border border-orange-400/10 rounded-md">
+                      <div className="hidden sm:block p-4 bg-orange-400/5 border border-orange-400/10 rounded-md">
                         <div className="flex items-center gap-2 mb-1">
                           <HelpCircle size={14} className="text-orange-400/60" />
                           <span className="text-[10px] font-bold text-orange-400/80 uppercase tracking-wider">Authentication Requirement</span>
@@ -366,8 +430,8 @@ export default function Contact() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Response Section */}
-              <div className="mt-auto border-t border-[#30363d] pt-6 pb-2">
+              {/* Response Section - Hidden on mobile */}
+              <div className="mt-auto border-t border-[#30363d] pt-6 pb-2 hidden sm:block">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <ChevronDown size={14} className="text-white/30" />
@@ -392,6 +456,7 @@ export default function Contact() {
                         <p className="pl-4 text-[#d2a8ff]">{`"message": "${response.text}",`}</p>
                         <p className="pl-4">{`"gateway": "portfolio-api-v1"`}</p>
                         <p>{`}`}</p>
+                        <p>{`}`}</p>
                       </div>
                     </div>
                   ) : (
@@ -404,8 +469,8 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </div >
+      </div >
+    </section >
   );
 }

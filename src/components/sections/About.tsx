@@ -8,7 +8,7 @@ export default function About() {
   const bioMarkdown = `# Bio\n\n${RESUME_DATA.bio.join("\n\n")}`;
 
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden">
+    <section id="readme" className="py-24 px-4 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Heading */}
         <div className="flex items-center gap-3 mb-10 group cursor-default">
@@ -16,8 +16,8 @@ export default function About() {
             <FileText size={20} />
           </div>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              bio<span className="text-cyan-vibrant">.md</span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
+              ReadMe<span className="text-cyan-vibrant ml-2">.TXT</span>
             </h2>
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               ~/sourav/profile/identity
@@ -32,7 +32,7 @@ export default function About() {
             <div className="flex">
               <div className="px-4 py-3 bg-white/5 border-r border-white/5 flex items-center gap-2 border-t-2 border-t-cyan-vibrant">
                 <FileText size={14} className="text-cyan-vibrant" />
-                <span className="text-xs font-mono text-foreground">bio.md</span>
+                <span className="text-xs font-mono text-foreground">ReadMe.txt</span>
               </div>
               <div className="px-4 py-3 opacity-30 flex items-center gap-2">
                 <FileText size={14} />
@@ -59,7 +59,7 @@ export default function About() {
                   ))}
                 </div>
                 <div className="flex-1 space-y-4">
-                  <div className="text-pink-vibrant"># Bio</div>
+                  <div className="text-pink-vibrant"># ReadMe</div>
                   <div className="text-foreground/70">
                     {RESUME_DATA.bio.map((para, i) => (
                       <div key={i} className="mb-4">
