@@ -125,7 +125,7 @@ export default function Projects() {
                     <FileText size={14} className="text-cyan-vibrant" />
                     <span className="text-xs font-mono text-foreground font-medium">{activeProject.title}.md</span>
                   </div>
-                  <div className="w-2 h-2 rounded-full bg-cyan-vibrant/20 group-hover:bg-cyan-vibrant/50 transition-colors" />
+                  <div className="w-2 h-2 rounded-full bg-cyan-vibrant/20 group-hover:bg-cyan-vibrant/50 transition-colors ml-2" />
                 </div>
               </div>
 

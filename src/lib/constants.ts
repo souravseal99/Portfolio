@@ -23,7 +23,9 @@ export const RESUME_DATA = {
     location: "Kolkata, India",
     email: "sourav.seal1999@gmail.com",
     github: "souravseal99",
-    linkedin: "in/sourav-seal",
+    linkedin: "sourav-seal-b3989b1b5",
+    twitter: "SealiyDev",
+    discord: "sealiy8415",
     phone: "+91 6296822691",
     bio: [
         "Full-stack engineer with 3+ years of experience bridging the gap between robust backends and high-fidelity frontends.",
