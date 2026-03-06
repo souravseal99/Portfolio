@@ -117,16 +117,27 @@ export default function Projects() {
             {/* Main Content (Tabs + Editor) */}
             <div className="flex-1 flex flex-col min-w-0 bg-black/30">
               {/* Tabs */}
-              <div className="bg-black/40 border-b border-white/10 flex overflow-x-auto scrollbar-hide shrink-0">
-                <div
-                  className="px-4 py-2 border-r border-white/10 bg-cyan-vibrant/[0.03] border-t-2 border-t-cyan-vibrant min-w-[140px] flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-2">
-                    <FileText size={14} className="text-cyan-vibrant" />
-                    <span className="text-xs font-mono text-foreground font-medium">{activeProject.title}.md</span>
-                  </div>
-                  <div className="w-2 h-2 rounded-full bg-cyan-vibrant/20 group-hover:bg-cyan-vibrant/50 transition-colors ml-2" />
-                </div>
+              <div className="bg-black/40 border-b border-white/10 flex overflow-x-auto no-scrollbar shrink-0">
+                {RESUME_DATA.projects.map((project, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveProjectIdx(idx)}
+                    className={`px-4 py-2 border-r border-white/10 flex items-center gap-4 group transition-colors relative shrink-0 ${activeProjectIdx === idx
+                      ? "bg-cyan-vibrant/[0.03] text-foreground"
+                      : "bg-black/20 text-muted-foreground/40 hover:bg-white/5 hover:text-muted-foreground/80"
+                      }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <FileText size={14} className={activeProjectIdx === idx ? "text-cyan-vibrant" : "opacity-40"} />
+                      <span className="text-xs font-mono font-medium truncate">{project.title}.md</span>
+                    </div>
+                    {activeProjectIdx === idx && (
+                      <div className="absolute top-0 left-0 w-full h-[2px] bg-cyan-vibrant" />
+                    )}
+                    <div className={`w-2 h-2 rounded-full transition-colors ml-1 shrink-0 ${activeProjectIdx === idx ? "bg-cyan-vibrant/40" : "bg-white/5 group-hover:bg-white/20"}`} />
+                  </button>
+                ))}
+                <button className="px-4 py-2 text-white/10 hover:text-white/30">+</button>
               </div>
 
               {/* Editor Content Area */}
