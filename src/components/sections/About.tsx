@@ -5,10 +5,9 @@ import { RESUME_DATA } from "@/lib/constants";
 import { FileText, Eye, Code, ChevronRight } from "lucide-react";
 
 export default function About() {
-  const bioMarkdown = `# Bio\n\n${RESUME_DATA.bio.join("\n\n")}`;
-
   return (
     <section id="readme" className="py-24 px-4 relative overflow-hidden">
+      <span id="about" className="invisible absolute top-0" />
       <div className="max-w-6xl mx-auto">
         {/* Section Heading */}
         <div className="flex items-center gap-3 mb-10 group cursor-default">
@@ -17,7 +16,7 @@ export default function About() {
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase italic">
-              ReadMe<span className="text-cyan-vibrant ml-2">.TXT</span>
+              ReadMe<span className="text-cyan-vibrant ml-2">.txt</span>
             </h2>
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               ~/sourav/profile/identity
@@ -36,7 +35,7 @@ export default function About() {
               </div>
               <div className="px-4 py-3 opacity-30 flex items-center gap-2">
                 <FileText size={14} />
-                <span className="text-xs font-mono">README.md</span>
+                <span className="text-xs font-mono">README.txt</span>
               </div>
             </div>
             <div className="flex gap-4 opacity-50">

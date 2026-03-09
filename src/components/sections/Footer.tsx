@@ -5,8 +5,7 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Heart,
-  MessageSquare
+  Heart
 } from "lucide-react";
 
 export default function Footer() {
@@ -21,7 +20,7 @@ export default function Footer() {
           <SocialLink href={`https://github.com/${RESUME_DATA.github}`} icon={<Github size={22} />} label="GitHub" />
           <SocialLink href={`https://linkedin.com/in/${RESUME_DATA.linkedin}`} icon={<Linkedin size={22} />} label="LinkedIn" />
           <SocialLink href={`https://twitter.com/${RESUME_DATA.twitter}`} icon={<Twitter size={22} />} label="Twitter" />
-          <SocialLink href={`https://discord.com/users/${RESUME_DATA.discord}`} icon={<MessageSquare size={22} />} label="Discord" />
+          <SocialLink href={`https://discord.com/users/${RESUME_DATA.discord}`} icon={<img src="https://cdn.simpleicons.org/discord/white" className="w-[22px] h-[22px] object-contain opacity-70 group-hover:opacity-100 transition-opacity" alt="Discord" />} label="Discord" />
         </div>
 
         {/* Minimal Credit */}

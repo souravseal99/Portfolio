@@ -10,7 +10,7 @@ import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background selection:bg-cyan-500/30 overflow-x-hidden">
+    <div className="min-h-screen bg-background selection:bg-cyan-500/30 overflow-x-hidden pb-16 lg:pb-0">
       <Header />
 
       {/* Figma Aesthetic Gradient Backgrounds */}

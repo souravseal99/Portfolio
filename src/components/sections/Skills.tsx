@@ -229,13 +229,13 @@ export default function Skills() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+                    className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[60] md:hidden"
                   />
                   <motion.div
                     initial={{ x: -260 }}
                     animate={{ x: 0 }}
                     exit={{ x: -260 }}
-                    className="absolute top-0 left-0 bottom-0 w-64 bg-[#161b22] border-r border-orange-500/20 z-50 md:hidden flex flex-col pt-4"
+                    className="absolute top-0 left-0 bottom-0 w-64 bg-[#161b22] border-r border-orange-500/20 z-[70] md:hidden flex flex-col pt-4"
                   >
                     <div className="p-4">
                       <div className="flex items-center justify-between mb-6">
@@ -328,7 +328,7 @@ export default function Skills() {
                       Service Directory
                       <ShieldCheck size={20} className="text-green-500" />
                     </h2>
-                    <p className="text-xs text-white/40 font-mono tracking-tight mt-1 italic">// High availability across On-Premise (Office) and Remote VPCs</p>
+                    <p className="text-xs text-white/40 font-mono tracking-tight mt-1 italic">// High availability across On-Premise (Office) and Remote Workspaces</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] text-white/30 font-mono uppercase tracking-widest bg-white/5 px-2 py-1 rounded">Region: {RESUME_DATA.location.split(",")[0].toLowerCase()}-1</span>
@@ -342,10 +342,9 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <AnimatePresence mode="popLayout" initial={false}>
+                <AnimatePresence mode="sync" initial={false}>
                   <motion.div
-                    layout
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 min-h-[400px]"
                   >
                     {filteredSkills.map((skill) => {
                       const slug = SKILL_SLUGS[skill.name] || "codeigniter";
@@ -426,21 +425,6 @@ export default function Skills() {
         </div>
       </div>
 
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.1);
-        }
-      `}</style>
     </section>
   );
 }

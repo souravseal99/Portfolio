@@ -117,27 +117,29 @@ export default function Projects() {
             {/* Main Content (Tabs + Editor) */}
             <div className="flex-1 flex flex-col min-w-0 bg-black/30">
               {/* Tabs */}
-              <div className="bg-black/40 border-b border-white/10 flex overflow-x-auto no-scrollbar shrink-0">
-                {RESUME_DATA.projects.map((project, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveProjectIdx(idx)}
-                    className={`px-4 py-2 border-r border-white/10 flex items-center gap-4 group transition-colors relative shrink-0 ${activeProjectIdx === idx
-                      ? "bg-cyan-vibrant/[0.03] text-foreground"
-                      : "bg-black/20 text-muted-foreground/40 hover:bg-white/5 hover:text-muted-foreground/80"
-                      }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <FileText size={14} className={activeProjectIdx === idx ? "text-cyan-vibrant" : "opacity-40"} />
-                      <span className="text-xs font-mono font-medium truncate">{project.title}.md</span>
-                    </div>
-                    {activeProjectIdx === idx && (
-                      <div className="absolute top-0 left-0 w-full h-[2px] bg-cyan-vibrant" />
-                    )}
-                    <div className={`w-2 h-2 rounded-full transition-colors ml-1 shrink-0 ${activeProjectIdx === idx ? "bg-cyan-vibrant/40" : "bg-white/5 group-hover:bg-white/20"}`} />
-                  </button>
-                ))}
-                <button className="px-4 py-2 text-white/10 hover:text-white/30">+</button>
+              <div className="relative border-b border-white/10 flex overflow-hidden lg:overflow-visible shrink-0 bg-black/40 after:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-12 after:bg-gradient-to-l after:from-[#11061f] after:to-transparent after:pointer-events-none md:after:hidden">
+                <div className="flex overflow-x-auto no-scrollbar w-full">
+                  {RESUME_DATA.projects.map((project, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveProjectIdx(idx)}
+                      className={`px-4 py-2 border-r border-white/10 flex items-center gap-4 group transition-colors relative shrink-0 ${activeProjectIdx === idx
+                        ? "bg-cyan-vibrant/[0.03] text-foreground"
+                        : "bg-black/20 text-muted-foreground/40 hover:bg-white/5 hover:text-muted-foreground/80"
+                        }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <FileText size={14} className={activeProjectIdx === idx ? "text-cyan-vibrant" : "opacity-40"} />
+                        <span className="text-xs font-mono font-medium truncate">{project.title}.md</span>
+                      </div>
+                      {activeProjectIdx === idx && (
+                        <div className="absolute top-0 left-0 w-full h-[2px] bg-cyan-vibrant" />
+                      )}
+                      <div className={`w-2 h-2 rounded-full transition-colors ml-1 shrink-0 ${activeProjectIdx === idx ? "bg-cyan-vibrant/40" : "bg-white/5 group-hover:bg-white/20"}`} />
+                    </button>
+                  ))}
+                  <button className="px-4 py-2 text-white/10 hover:text-white/30">+</button>
+                </div>
               </div>
 
               {/* Editor Content Area */}
@@ -212,7 +214,7 @@ export default function Projects() {
                             <Github size={18} className="shrink-0" />
                             Source Code
                           </a>
-                          <button className="flex items-center gap-3 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-foreground text-sm font-medium hover:bg-white/10 transition-colors opacity-50 cursor-not-allowed whitespace-nowrap">
+                          <button title="Coming soon" className="flex items-center gap-3 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-foreground text-sm font-medium hover:bg-white/10 transition-colors opacity-50 cursor-not-allowed whitespace-nowrap">
                             <ExternalLink size={18} className="shrink-0" />
                             Live Demo
                           </button>
@@ -310,25 +312,6 @@ export default function Projects() {
         </div>
       </div>
 
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 5px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.1);
-        }
-        .bg-grid-pattern {
-          background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
-          background-size: 20px 20px;
-        }
-      `}</style>
     </section>
   );
 }

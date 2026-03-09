@@ -111,7 +111,7 @@ export default function Contact() {
         </div>
 
         {/* Postman-like Sidebar + Main Workspace */}
-        <div className="flex h-[850px] md:h-[720px] bg-[#161b22]/40 backdrop-blur-sm border border-[#30363d] rounded-xl overflow-hidden shadow-2xl flex-col md:flex-row">
+        <div className="flex min-h-[600px] h-[calc(100dvh-8rem)] md:h-[720px] bg-[#161b22]/40 backdrop-blur-sm border border-[#30363d] rounded-xl overflow-hidden shadow-2xl flex-col md:flex-row">
 
           {/* Collection Sidebar - Hidden on mobile */}
           <div className="w-64 bg-[#161b22]/50 border-r border-[#30363d] hidden lg:flex flex-col shrink-0">
@@ -338,17 +338,6 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      {/* Mobile Submit Button - Only visible on small screens */}
-                      <div className="sm:hidden mt-6 pb-2">
-                        <button
-                          onClick={handleSend}
-                          disabled={isSending}
-                          className="w-full bg-[#1f6feb] hover:bg-[#388bfd] text-white py-4 rounded-lg text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-3 disabled:opacity-50 transition-all active:scale-[0.98] shadow-lg shadow-[#1f6feb]/20"
-                        >
-                          {isSending ? <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" /> : <Send size={16} />}
-                          SEND PAYLOAD
-                        </button>
-                      </div>
                     </div>
                   ) : (
                     <div className="space-y-8 py-2 px-6 overflow-y-auto no-scrollbar">
@@ -363,18 +352,7 @@ export default function Contact() {
                         </p>
                       </div>
 
-                      {/* Mobile Visit Button - Only visible on small screens for GET requests */}
-                      <div className="sm:hidden mt-2">
-                        <button
-                          onClick={handleSend}
-                          className="w-full bg-[#1f6feb] hover:bg-[#388bfd] text-white py-4 rounded-lg text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-lg shadow-[#1f6feb]/20"
-                        >
-                          <Send size={16} />
-                          VISIT ENDPOINT
-                        </button>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
                         <div className="space-y-4">
                           <div className="space-y-1.5">
                             <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Method</h4>
@@ -429,6 +407,18 @@ export default function Contact() {
                   )}
                 </motion.div>
               </AnimatePresence>
+
+              {/* Mobile Action Button - Unified & outside animation block */}
+              <div className="sm:hidden mt-4 pb-2 px-4 shrink-0">
+                <button
+                  onClick={handleSend}
+                  disabled={isSending}
+                  className="w-full bg-[#1f6feb] hover:bg-[#388bfd] text-white py-4 rounded-lg text-xs font-bold tracking-[0.2em] flex items-center justify-center gap-3 disabled:opacity-50 transition-all active:scale-[0.98] shadow-lg shadow-[#1f6feb]/20"
+                >
+                  {isSending ? <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" /> : <Send size={16} />}
+                  {activeEndpoint.method === "POST" ? "SEND PAYLOAD" : "VISIT ENDPOINT"}
+                </button>
+              </div>
 
               {/* Response Section - Hidden on mobile */}
               <div className="mt-auto border-t border-[#30363d] pt-6 pb-2 hidden sm:block">

@@ -2,13 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { GitBranch, Box, Code2, Globe, Atom, Zap, Hexagon } from "lucide-react";
+import { GitBranch, Code2, Globe, Atom, Terminal, Briefcase, Monitor, Cloud, Send } from "lucide-react";
 
 const navItems = [
   { name: "career", href: "#experience" },
   { name: "projects", href: "#projects" },
   { name: "arsenal", href: "#arsenal" },
   { name: "connect", href: "#contact" },
+];
+
+const mobileNavItems = [
+  { name: "main", href: "#main", icon: Terminal },
+  { name: "career", href: "#experience", icon: Briefcase },
+  { name: "projects", href: "#projects", icon: Monitor },
+  { name: "arsenal", href: "#arsenal", icon: Cloud },
+  { name: "connect", href: "#contact", icon: Send },
 ];
 
 export default function Header() {
@@ -24,21 +32,22 @@ export default function Header() {
     };
 
     const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Map section IDs to display names if needed
-          const id = entry.target.id;
-          const displayNames: Record<string, string> = {
-            main: "Main",
-            readme: "ReadMe",
-            experience: "Career",
-            projects: "Projects",
-            arsenal: "Arsenal",
-            contact: "Connect"
-          };
-          setActiveSection(displayNames[id] || "main");
-        }
-      });
+      const intersecting = entries.filter(e => e.isIntersecting);
+      if (intersecting.length === 0) return;
+
+      // Sort by vertical position (topmost wins)
+      const topEntry = intersecting.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+
+      const id = topEntry.target.id;
+      const displayNames: Record<string, string> = {
+        main: "Main",
+        readme: "ReadMe",
+        experience: "Career",
+        projects: "Projects",
+        arsenal: "Arsenal",
+        contact: "Connect"
+      };
+      setActiveSection(displayNames[id] || "main");
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
@@ -65,7 +74,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 h-16 md:h-14 flex items-center justify-between">
         {/* Left: Fullstack Status */}
         <div className="flex items-center gap-5 text-[10px] font-mono uppercase tracking-widest">
           <div className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
@@ -106,6 +115,36 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <nav className="lg:hidden fixed top-0 bottom-0 left-0 right-0 z-40 h-20 bg-background/95 backdrop-blur-xl border-t border-white/5 pb-[env(safe-area-inset-bottom)]">
+        <div className="flex items-center justify-around h-[72px] px-2 py-1">
+          {mobileNavItems.map((item) => {
+            const isActive = activeSection.toLowerCase() === item.name.toLowerCase();
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${isActive ? "text-cyan-vibrant" : "text-muted-foreground hover:text-cyan-vibrant"
+                  }`}
+              >
+                <div className={`relative p-1.5 rounded-xl transition-all duration-300 ${isActive ? "bg-cyan-500/10 text-cyan-vibrant" : "text-muted-foreground"}`}>
+                  <Icon size={20} className={isActive ? "opacity-100" : "opacity-70"} />
+                  {isActive && (
+                    <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                    </span>
+                  )}
+                </div>
+                <span className="text-[9px] font-mono font-bold uppercase tracking-widest">{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </header>
   );
 }

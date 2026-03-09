@@ -117,7 +117,7 @@ export default function Experience() {
                     </span>
 
                     {/* Run number */}
-                    <span className="font-mono text-xs text-muted-foreground/40 shrink-0">
+                    <span className="hidden xs:inline-block font-mono text-xs text-muted-foreground/40 shrink-0">
                       RUN&nbsp;#{runNum}
                     </span>
 
