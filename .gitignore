@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+.ruflo
+.agents
+.claude-flow
+.swarm
 
 # debug
 npm-debug.log*
