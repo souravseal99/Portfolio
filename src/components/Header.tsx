@@ -2,52 +2,27 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { GitBranch, Code2, Globe, Atom, Terminal, Briefcase, Monitor, Cloud, Send } from "lucide-react";
-
-const navItems = [
-  { name: "career", href: "#experience" },
-  { name: "projects", href: "#projects" },
-  { name: "arsenal", href: "#arsenal" },
-  { name: "connect", href: "#contact" },
-];
-
-const mobileNavItems = [
-  { name: "main", href: "#main", icon: Terminal },
-  { name: "career", href: "#experience", icon: Briefcase },
-  { name: "projects", href: "#projects", icon: Monitor },
-  { name: "arsenal", href: "#arsenal", icon: Cloud },
-  { name: "connect", href: "#contact", icon: Send },
-];
+import { ArrowUpRight } from "lucide-react";
+import { SITE_CONFIG, NAV_ITEMS } from "@/config";
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState("main");
 
   useEffect(() => {
-    const sections = ["main", "readme", "experience", "projects", "arsenal", "contact"];
+    const sections = NAV_ITEMS.map((item) => item.href.replace("#", ""));
 
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -75% 0px", // Trigger when section is in top-middle area
+      rootMargin: "-20% 0px -60% 0px",
       threshold: 0,
     };
 
     const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      const intersecting = entries.filter(e => e.isIntersecting);
+      const intersecting = entries.filter((e) => e.isIntersecting);
       if (intersecting.length === 0) return;
 
-      // Sort by vertical position (topmost wins)
       const topEntry = intersecting.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-
-      const id = topEntry.target.id;
-      const displayNames: Record<string, string> = {
-        main: "Main",
-        readme: "ReadMe",
-        experience: "Career",
-        projects: "Projects",
-        arsenal: "Arsenal",
-        contact: "Connect"
-      };
-      setActiveSection(displayNames[id] || "main");
+      setActiveSection(topEntry.target.id);
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
@@ -57,9 +32,8 @@ export default function Header() {
       if (el) observer.observe(el);
     });
 
-    // Reset to main if at the very top
     const handleScroll = () => {
-      if (window.scrollY < 100) {
+      if (window.scrollY < 80) {
         setActiveSection("main");
       }
     };
@@ -73,73 +47,72 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 h-16 md:h-14 flex items-center justify-between">
-        {/* Left: Fullstack Status */}
-        <div className="flex items-center gap-5 text-[10px] font-mono uppercase tracking-widest">
-          <div className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
-            <Globe size={12} className="text-cyan-vibrant" />
-            <span className="text-foreground/70">localhost:3000</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
-            <Code2 size={12} className="text-pink-vibrant fill-pink-500/10" />
-            <span className="text-foreground/70">node_v20.x</span>
-          </div>
-          <div className="hidden lg:flex items-center gap-2 bg-white/5 px-2 py-1 rounded border border-white/5">
-            <Atom size={12} className="text-purple-vibrant animate-[spin_10s_linear_infinite]" />
-            <span className="text-foreground/70">react_v18</span>
-          </div>
+    <header className="sticky top-0 z-50 bg-[#07090E]/85 backdrop-blur-xl border-b border-white/[0.08]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+        {/* Left: Brand & Status with X Handle */}
+        <div className="flex items-center gap-3 shrink-0">
+          <Link href="#main" className="font-bold text-white tracking-tight text-sm hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+            <span>{SITE_CONFIG.name}</span>
+            <span className="text-slate-500 font-mono font-normal text-xs">({SITE_CONFIG.handle})</span>
+          </Link>
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+            <span>{SITE_CONFIG.availability}</span>
+          </span>
         </div>
 
-        {/* Center: Extension Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`text-[11px] font-mono transition-all hover:scale-105 ${activeSection.toLowerCase() === item.name.toLowerCase()
-                ? "text-cyan-vibrant"
-                : "text-muted-foreground hover:text-cyan-vibrant"
+        {/* Center: Desktop Monospace Navigation */}
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-6 font-mono text-xs text-slate-400">
+          {NAV_ITEMS.map((item) => {
+            const id = item.href.replace("#", "");
+            const isActive = activeSection === id;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`transition-colors whitespace-nowrap hover:text-cyan-400 ${
+                  isActive ? "text-cyan-400 font-medium" : "text-slate-400"
                 }`}
-            >
-              <span className="opacity-40">{">"}</span> {item.name}
-            </Link>
-          ))}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Right: Git Status / Context Indicator */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/20 shadow-[0_0_10px_rgba(236,72,153,0.1)]">
-            <GitBranch size={12} className="text-pink-vibrant" />
-            <span className="text-[10px] font-mono font-bold text-pink-400 capitalize">{activeSection}</span>
-          </div>
+        {/* Right: Primary Resume CTA */}
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href={SITE_CONFIG.resumePdf}
+            download={SITE_CONFIG.resumeDownloadName}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 text-xs font-medium transition-all shadow-[0_0_15px_rgba(6,182,212,0.15)] whitespace-nowrap"
+          >
+            <span>Resume (PDF)</span>
+            <ArrowUpRight size={13} className="text-cyan-400" />
+          </a>
         </div>
       </div>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="lg:hidden fixed top-0 bottom-0 left-0 right-0 z-40 h-20 bg-background/95 backdrop-blur-xl border-t border-white/5 pb-[env(safe-area-inset-bottom)]">
-        <div className="flex items-center justify-around h-[72px] px-2 py-1">
-          {mobileNavItems.map((item) => {
-            const isActive = activeSection.toLowerCase() === item.name.toLowerCase();
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#07090E]/95 backdrop-blur-xl border-t border-white/[0.08] pb-[env(safe-area-inset-bottom)]">
+        <div className="flex items-center justify-around h-16 px-2">
+          {NAV_ITEMS.map((item) => {
+            const id = item.href.replace("#", "");
+            const isActive = activeSection === id;
             const Icon = item.icon;
 
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${isActive ? "text-cyan-vibrant" : "text-muted-foreground hover:text-cyan-vibrant"
-                  }`}
+                className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${
+                  isActive ? "text-cyan-400" : "text-slate-500 hover:text-slate-300"
+                }`}
               >
-                <div className={`relative p-1.5 rounded-xl transition-all duration-300 ${isActive ? "bg-cyan-500/10 text-cyan-vibrant" : "text-muted-foreground"}`}>
-                  <Icon size={20} className={isActive ? "opacity-100" : "opacity-70"} />
-                  {isActive && (
-                    <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-                    </span>
-                  )}
-                </div>
-                <span className="text-[9px] font-mono font-bold uppercase tracking-widest">{item.name}</span>
+                <Icon size={18} className={isActive ? "opacity-100" : "opacity-60"} />
+                <span className="text-[10px] font-mono tracking-wider">{item.mobileLabel}</span>
               </Link>
             );
           })}

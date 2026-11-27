@@ -27,6 +27,7 @@
 .agents
 .claude-flow
 .swarm
+.planning
 
 # debug
 npm-debug.log*

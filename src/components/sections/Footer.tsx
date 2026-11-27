@@ -1,6 +1,6 @@
 "use client";
 
-import { RESUME_DATA } from "@/lib/constants";
+import { SITE_CONFIG } from "@/config";
 import {
   Github,
   Linkedin,
@@ -17,20 +17,20 @@ export default function Footer() {
 
         {/* Simple Social Links */}
         <div className="flex items-center gap-8">
-          <SocialLink href={`https://github.com/${RESUME_DATA.github}`} icon={<Github size={22} />} label="GitHub" />
-          <SocialLink href={`https://linkedin.com/in/${RESUME_DATA.linkedin}`} icon={<Linkedin size={22} />} label="LinkedIn" />
-          <SocialLink href={`https://twitter.com/${RESUME_DATA.twitter}`} icon={<Twitter size={22} />} label="Twitter" />
-          <SocialLink href={`https://discord.com/users/${RESUME_DATA.discord}`} icon={<img src="https://cdn.simpleicons.org/discord/white" className="w-[22px] h-[22px] object-contain opacity-70 group-hover:opacity-100 transition-opacity" alt="Discord" />} label="Discord" />
+          <SocialLink href={SITE_CONFIG.socials.github} icon={<Github size={22} />} label="GitHub" />
+          <SocialLink href={SITE_CONFIG.socials.linkedin} icon={<Linkedin size={22} />} label="LinkedIn" />
+          <SocialLink href={SITE_CONFIG.socials.twitter} icon={<Twitter size={22} />} label="Twitter" />
+          <SocialLink href={SITE_CONFIG.socials.discord} icon={<img src="https://cdn.simpleicons.org/discord/white" className="w-[22px] h-[22px] object-contain opacity-70 group-hover:opacity-100 transition-opacity" alt="Discord" />} label="Discord" />
         </div>
 
         {/* Minimal Credit */}
         <div className="text-center space-y-3">
           <div className="flex items-center justify-center gap-2 text-[10px] md:text-xs font-mono text-white/30 uppercase tracking-[0.4em]">
-            Built with precision by <span className="text-white/80 font-bold tracking-normal">{RESUME_DATA.name}</span>
+            Built with precision by <span className="text-white/80 font-bold tracking-normal">{SITE_CONFIG.name}</span>
             <Heart size={14} className="text-pink-vibrant fill-pink-vibrant/20 animate-pulse ml-1" />
           </div>
           <div className="text-[9px] font-mono text-white/10 uppercase tracking-widest">
-            &copy; {currentYear} // Digital Portfolio v1.0.4
+            &copy; {currentYear} // {SITE_CONFIG.handle} · Digital Portfolio
           </div>
         </div>
       </div>
